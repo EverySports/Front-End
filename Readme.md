@@ -14,14 +14,12 @@ react-native: 0.62.2
 # Use react-navigation
 
 1. yarn add @react-navigation/native
-2. yarn add react-native-reanimated react-native-gesture-handler react-native-screens
-   react-native-safe-area-context @react-native-community/masked-view
-3. yarn add @react-navigation/stack
-4. cd ios
+2. yarn add react-native-reanimated react-native-gesture-handler react-native-screens @react-navigation/stack react-native-safe-area-context @react-native-community/masked-view @react-navigation/bottom-tabs
+3. cd ios
    pod install
    cd ..
 
-# if RN.ver >= .06
+# if your RN.ver >= .06 && get error about RNGhandler
 
 1. react-native unlink react-native-gesture-hadnler
 2. project restart
