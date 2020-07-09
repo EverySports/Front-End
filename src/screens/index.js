@@ -1,23 +1,21 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Logo from '../assets/img/Es.png';
-import Every from './Every/Every';
-import styled from 'styled-components/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+//import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Running, Home, Graph, Chat, Settings} from './BottomTabNaviIcons';
+import Every from './EveryScreens/Every';
+
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+// import Octicons from 'react-native-vector-icons/Octicons';
+// import Entypo from 'react-native-vector-icons/Entypo';
+// import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+// import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const TempScreen = () => {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Icon name="home" size={16} color="#000000" />
-      <Icon name="home" size={32} color="black" />
-      <Icon name="home" size={48} color="black" />
-      <Icon name="home" size={72} color="black" />
-      <Image source={Logo} style={{height: 32, width: 47}} />
+      <Running />
     </View>
   );
 };
@@ -25,6 +23,16 @@ const TempScreen = () => {
 const Tab = createMaterialBottomTabNavigator();
 
 const index = () => {
+  const IconsComponents = [
+    <Home />,
+    <Running />,
+    <Graph />,
+    <Chat />,
+    <Settings />,
+  ];
+
+  const iconsName = ['에브리', '운동', '데이터', '채팅', '설정'];
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -33,24 +41,11 @@ const index = () => {
         }}
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused
-                ? 'ios-information-circle'
-                : 'ios-information-circle-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list-box' : 'ios-list';
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+            // focused, color, size
+            return IconsComponents[iconsName.indexOf(route.name)];
           },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-        }}>
+        })}>
+        <Tab.Screen name="에브리" component={Every} initialParams={'asd'} />
         <Tab.Screen name="운동" component={TempScreen} />
         <Tab.Screen name="데이터" component={TempScreen} />
         <Tab.Screen name="채팅" component={TempScreen} />
@@ -61,10 +56,3 @@ const index = () => {
 };
 
 export default index;
-
-// options={{
-//   tabBarLabel: 'Home',
-//   tabBarIcon: ({color}) => (
-//     <MaterialCommunityIcons name="home" color={color} size={26} />
-//   ),
-// }}

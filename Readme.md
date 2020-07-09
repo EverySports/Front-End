@@ -19,6 +19,10 @@ react-native: 0.62.2
    pod install
    cd ..
 
+# Use react-native-vectors-icons
+
+1. setting guide : https://github.com/oblador/react-native-vector-icons
+
 # if your RN.ver >= .06 && get error about RNGhandler
 
 1. react-native unlink react-native-gesture-hadnler
