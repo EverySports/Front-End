@@ -12,8 +12,10 @@ const {width, height} = Dimensions.get('window');
 
 const ImgBox = ({img, name, navigation}) => {
   const onPress = () => {
-    console.log(name);
-    //navigation.navigate('Search');
+    // set Params Value
+    navigation.navigate('Search', {
+      name: name,
+    });
   };
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>

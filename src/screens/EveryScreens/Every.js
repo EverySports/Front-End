@@ -1,11 +1,10 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView, Button} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import EverySports from './EverySports';
+import Search from './Search';
 import LinearGradient from 'react-native-linear-gradient';
 import ImgBox from '../common/ImgBox';
 import Slide from '../common/Slide';
-
 import yoga from '../../assets/img/yoga2.png';
 import pilates from '../../assets/img/pilates2.png';
 import health from '../../assets/img/health.png';
@@ -23,12 +22,17 @@ const EveryHome = ({navigation}) => {
 
       <View style={styles.contents}>
         <View style={{flexDirection: 'row'}}>
-          <ImgBox img={yoga} name={'요가'} navigation={navigation} />
-          <ImgBox img={pilates} name={'필라테스'} />
+          <ImgBox
+            img={yoga}
+            name={'요가'}
+            navigation={navigation}
+            navigation={navigation}
+          />
+          <ImgBox img={pilates} name={'필라테스'} navigation={navigation} />
         </View>
         <View style={{flexDirection: 'row'}}>
-          <ImgBox img={health} name={'헬스'} />
-          <ImgBox img={diet} name={'다이어트'} />
+          <ImgBox img={health} name={'헬스'} navigation={navigation} />
+          <ImgBox img={diet} name={'다이어트'} navigation={navigation} />
         </View>
       </View>
       <Slide headText={'전체 HOT Class'} info={allHotClassTempArray} />
@@ -47,7 +51,11 @@ const Every = () => {
         component={EveryHome}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Search" component={EverySports} />
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={({route}) => ({title: route.params.name})}
+      />
     </Stack.Navigator>
   );
 };
