@@ -4,6 +4,17 @@ import c from '../assets/img/joy.png';
 import d from '../assets/img/wd.png';
 import e from '../assets/img/yr.png';
 
+// sports type
+// yoga,  piltes,   health,    diet
+
+export const trainers = [
+  {
+    id: 1,
+    name: '아이린',
+    profileImage: a,
+  },
+];
+
 export const allHotClassTempArray = [
   {
     id: 1,
@@ -14,6 +25,7 @@ export const allHotClassTempArray = [
     endDate: '8월 31일',
     price: '56,000원',
     imgSrc: a,
+    type: 'yoga',
   },
   {
     id: 2,
@@ -24,6 +36,7 @@ export const allHotClassTempArray = [
     endDate: '8월 31일',
     price: '66,000원',
     imgSrc: b,
+    type: 'yoga',
   },
   {
     id: 3,
@@ -34,6 +47,7 @@ export const allHotClassTempArray = [
     endDate: '8월 31일',
     price: '100원',
     imgSrc: c,
+    type: 'yoga',
   },
   {
     id: 4,
@@ -44,6 +58,7 @@ export const allHotClassTempArray = [
     endDate: '8월 31일',
     price: '무료',
     imgSrc: d,
+    type: 'yoga',
   },
   {
     id: 5,
@@ -54,6 +69,7 @@ export const allHotClassTempArray = [
     endDate: '8월 31일',
     price: '56,000원',
     imgSrc: e,
+    type: 'yoga',
   },
 ];
 

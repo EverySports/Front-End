@@ -7,31 +7,31 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import SearchClassBox from '../common/SearchClassBox';
+import SearchTrainerBox from '../common/SearchTrainerBox';
 
 const {width, height} = Dimensions.get('window');
 
-const SearchClass = ({navigation}) => {
+const SearchTrainer = () => {
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.sectionContainer}>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <SearchTrainerBox />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <SearchTrainerBox />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <SearchTrainerBox />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <SearchTrainerBox />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <SearchTrainerBox />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <SearchTrainerBox />
         </View>
       </View>
     </ScrollView>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   classBox: {
     width: width / 2 - 20,
-    height: height / 2.5,
+    height: height / 3,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 20,
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SearchClass;
+export default SearchTrainer;

@@ -1,0 +1,7 @@
+react-vector-icons/Lib
+    import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+    import Ionicons from 'react-native-vector-icons/Ionicons';
+    import Octicons from 'react-native-vector-icons/Octicons';
+    import Entypo from 'react-native-vector-icons/Entypo';
+    import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+    import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';

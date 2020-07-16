@@ -1,38 +1,13 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  Dimensions,
-  Animated,
-} from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import styled from 'styled-components/native';
-import Animatable from 'react-native-animatable';
-import EverySports from './EverySports';
 import SearchClass from './SearchClass';
+import SearchTrainer from './SearchTrainer';
 
-const {height, width} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-const Pointer = styled.View`
-  margin-left: ${(props) => (props.state === 'trainer' ? width / 2 : 0)};
-  width: ${(props) => props.width / 2};
-  height: 1;
-  background-color: black;
-`;
-const SearchTrainer = ({route}) => {
-  return (
-    <View>
-      <Text>SearchTrainer</Text>
-    </View>
-  );
-};
-
-const Search = ({route}) => {
-  const {name} = route.params;
+const Search = ({navigation}) => {
   const [state, setState] = useState('class');
-
   return (
     <View style={styles.container}>
       <View style={styles.menugroup}>
@@ -53,13 +28,19 @@ const Search = ({route}) => {
       {/* <View style={pointer(state)} /> */}
       {/* contents */}
 
-      {state === 'class' ? <SearchClass /> : <SearchTrainer />}
+      {state === 'class' ? (
+        <SearchClass navigation={navigation} />
+      ) : (
+        <SearchTrainer />
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {backgroundColor: '#ffffff'},
+  container: {
+    backgroundColor: '#ffffff',
+  },
   menugroup: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -76,7 +57,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   pointerContainer: {
-    // justifyContent: 'space-around',
     flexDirection: 'row',
   },
   pointerBox: {

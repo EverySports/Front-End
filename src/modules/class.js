@@ -1,1 +1,1 @@
-export const yogaClass = [{}];
+export const classes = [{}];
