@@ -59,9 +59,9 @@ buck-out/
 /ios/Pods/
 
 # scr Dir
-src
+/src
 # scr_ Dir
-/src_/assets
-/api
+/src_/assets/img
+/src_/api
 
 
