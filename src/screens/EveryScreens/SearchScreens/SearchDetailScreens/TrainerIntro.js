@@ -1,5 +1,5 @@
 import React from 'react';
-import SGProfile from '../../../assets/img/classProfile.png';
+import SGProfile from '../../../../assets/img/classProfile.png';
 import {StyleSheet, Text, View, Dimensions, Image} from 'react-native';
 
 const {width} = Dimensions.get('window');

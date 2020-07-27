@@ -1,49 +1,39 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-import SearchTrainerBox from '../common/SearchTrainerBox';
+import {StyleSheet, View, Text, ScrollView, Dimensions} from 'react-native';
+import PtTeacher from '../../../../components/PtTeacher';
 
 const {width, height} = Dimensions.get('window');
 
-const SearchTrainer = () => {
+const SearchTeacherPresenter = ({navigation, teacherList}) => {
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.sectionContainer}>
-        <View style={styles.classBox}>
-          <SearchTrainerBox />
-        </View>
-        <View style={styles.classBox}>
-          <SearchTrainerBox />
-        </View>
-        <View style={styles.classBox}>
-          <SearchTrainerBox />
-        </View>
-        <View style={styles.classBox}>
-          <SearchTrainerBox />
-        </View>
-        <View style={styles.classBox}>
-          <SearchTrainerBox />
-        </View>
-        <View style={styles.classBox}>
-          <SearchTrainerBox />
-        </View>
+        {teacherList.map((teacher) => (
+          <View style={styles.classBox}>
+            <PtTeacher
+              key={teacher.teacher_ID}
+              name={teacher.teacher_Name}
+              sumnum={teacher.class_SumNum}
+              price={teacher.class_Price}
+              img={teacher.teacher_Image}
+              navigation={navigation}
+            />
+          </View>
+        ))}
       </View>
+      <View style={{height: 50}}></View>
     </ScrollView>
   );
 };
 
+export default SearchTeacherPresenter;
+
 const styles = StyleSheet.create({
   scrollContainer: {},
   sectionContainer: {
+    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
     alignItems: 'center',
   },
   classBox: {
@@ -67,5 +57,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'gold',
   },
 });
-
-export default SearchTrainer;

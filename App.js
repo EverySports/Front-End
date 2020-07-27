@@ -1,9 +1,20 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Index from './src/screens/index';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+// import Loading from './src_/screens/Loading';
+// import Login from './src_/screens/Login/Login';
+//import BottomTabNavigator from './src_/screens/Main/BottomTabNavigator';
+import Loading from './src_/screens/Loading';
+import Login from './src_/screens/Login/Login';
+import BottomTabNavigator from './src_/screens/Main/BottomTabNavigator';
 
-const App = () => {
-  return <Index />;
-};
+const AppSwitchNavigator = createSwitchNavigator(
+  {
+    loading: Loading,
+    login: Login,
+    main: BottomTabNavigator,
+  },
+  {
+    initialRouteName: 'loading',
+  },
+);
 
-export default App;
+export default createAppContainer(AppSwitchNavigator);

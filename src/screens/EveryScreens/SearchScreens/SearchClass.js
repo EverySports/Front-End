@@ -1,39 +1,32 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
-import SearchClassBox from '../common/SearchClassBox';
+import {StyleSheet, View, ScrollView, Dimensions} from 'react-native';
+import PtClassComponent from './PtClassComponent';
 
 const {width, height} = Dimensions.get('window');
+
+//요가 클릭 -> 요가 리스트 출력 -> 요가 컴포넌트 클릭 -> 클릭한 요가컴포넌트에 대한 디테일 제공
 
 const SearchClass = ({navigation}) => {
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.sectionContainer}>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <PtClassComponent navigation={navigation} />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <PtClassComponent navigation={navigation} />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <PtClassComponent navigation={navigation} />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <PtClassComponent navigation={navigation} />
         </View>
         <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
-        </View>
-        <View style={styles.classBox}>
-          <SearchClassBox navigation={navigation} />
+          <PtClassComponent navigation={navigation} />
         </View>
       </View>
+      <View style={{height: 50}}></View>
     </ScrollView>
   );
 };
@@ -43,7 +36,6 @@ const styles = StyleSheet.create({
   sectionContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
     alignItems: 'center',
   },
   classBox: {

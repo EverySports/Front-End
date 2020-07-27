@@ -7,12 +7,12 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import SG from '../../assets/img/sg.png';
+import SG from '../../../assets/img/sg.png';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const {width, height} = Dimensions.get('window');
 
-const SearchClassBox = ({navigation}) => {
+const PtClassComponent = ({navigation}) => {
   const onPress = () => {
     navigation.navigate('ClassInfo');
   };
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   reviewGroup: {
+    alignItems: 'center',
     flexDirection: 'row',
   },
   reviewStar: {
@@ -89,4 +90,4 @@ const styles = StyleSheet.create({
     color: '#495057',
   },
 });
-export default SearchClassBox;
+export default PtClassComponent;

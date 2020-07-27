@@ -5,47 +5,52 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
-  ImageBackground,
+  Image,
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
 
-const ImgBox = ({img, name, navigation}) => {
+const Category = ({img, name, navigation}) => {
   const onPress = () => {
-    // set Params Value
     navigation.navigate('Search', {
       name: name,
     });
   };
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <ImageBackground source={img} style={styles.ImgBlock}>
-        <View style={styles.textBox}>
-          <Text style={styles.text}>{name}</Text>
-        </View>
-      </ImageBackground>
+      <Image source={img} style={styles.ImgBlock} />
+      <View style={styles.textBox}>
+        <Text style={styles.text}>{name}</Text>
+      </View>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: width / 2,
-    height: height / 4.5,
+    width: width / 2 - 20,
+    height: height / 4.5 - 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   ImgBlock: {
+    borderRadius: 10,
     opacity: 0.85,
     borderRadius: 4,
     justifyContent: 'flex-end',
-    width: width / 2,
-    height: height / 4.5,
+    width: width / 2 - 20,
+    height: height / 4.5 - 20,
   },
   textBox: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: width / 2 - 20,
+    position: 'absolute',
+    bottom: 0,
     height: 30,
     backgroundColor: 'white',
     opacity: 0.75,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontWeight: '900',
@@ -54,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImgBox;
+export default Category;

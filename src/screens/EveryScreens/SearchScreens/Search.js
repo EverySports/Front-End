@@ -25,9 +25,6 @@ const Search = ({navigation}) => {
       <View style={styles.pointerContainer}>
         <View style={pointer(state)} />
       </View>
-      {/* <View style={pointer(state)} /> */}
-      {/* contents */}
-
       {state === 'class' ? (
         <SearchClass navigation={navigation} />
       ) : (
@@ -79,6 +76,7 @@ const pointer = (state) => {
     width: width / 4,
     borderWidth: 1,
     borderColor: '#495057',
+    marginBottom: 5,
   };
 };
 

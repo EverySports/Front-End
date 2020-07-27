@@ -5,3 +5,7 @@ react-vector-icons/Lib
     import Entypo from 'react-native-vector-icons/Entypo';
     import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
     import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
+
+
+import LinearGradient from 'react-native-linear-gradient';

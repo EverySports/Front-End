@@ -1,25 +1,18 @@
 import React, {useRef} from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  ScrollView,
-  Dimensions,
-  Animated,
-} from 'react-native';
+import {StyleSheet, View, Text, Animated} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Search from './Search';
-import LinearGradient from 'react-native-linear-gradient';
-import ImgBox from '../common/ImgBox';
-import Slide from '../common/Slide';
 import yoga from '../../assets/img/yoga2.png';
 import pilates from '../../assets/img/pilates2.png';
 import health from '../../assets/img/health.png';
 import diet from '../../assets/img/diet.png';
 import {allHotClassTempArray} from '../../modules/traner';
-import ClassInfo from './ClassInfo';
 
-const {width} = Dimensions.get('window');
+// import Slide from './components/Slide;
+import Search from './SearchScreens/Search';
+import ClassInfo from './SearchScreens/SearchDetailScreens/ClassInfo';
+import CategoryComponent from './CategoryComponent';
+import SlideComponent from './SlideComponent';
+
 const HEADER_HEIGHT = 200;
 const EveryHome = ({navigation}) => {
   const scrollA = useRef(new Animated.Value(0)).current;
@@ -36,17 +29,35 @@ const EveryHome = ({navigation}) => {
         </Animated.Text>
       </Animated.View>
       <View style={styles.contents}>
-        <View style={{flexDirection: 'row'}}>
-          <ImgBox img={yoga} name={'요가'} navigation={navigation} />
-          <ImgBox img={pilates} name={'필라테스'} navigation={navigation} />
+        <Text style={styles.CategoryComponentheader}>카테고리별 찾기</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            marginBottom: 10,
+          }}>
+          <CategoryComponent img={yoga} name={'요가'} navigation={navigation} />
+          <CategoryComponent
+            img={pilates}
+            name={'필라테스'}
+            navigation={navigation}
+          />
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <ImgBox img={health} name={'헬스'} navigation={navigation} />
-          <ImgBox img={diet} name={'다이어트'} navigation={navigation} />
+        <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+          <CategoryComponent
+            img={health}
+            name={'헬스'}
+            navigation={navigation}
+          />
+          <CategoryComponent
+            img={diet}
+            name={'다이어트'}
+            navigation={navigation}
+          />
         </View>
       </View>
-      <Slide headText={'전체 HOT Class'} info={allHotClassTempArray} />
-      <Slide headText={'신규 Class'} info={allHotClassTempArray} />
+      <SlideComponent headText={'전체 HOT Class'} info={allHotClassTempArray} />
+      <SlideComponent headText={'신규 Class'} info={allHotClassTempArray} />
     </Animated.ScrollView>
   );
 };
@@ -101,13 +112,20 @@ const styles = StyleSheet.create({
     color: '#495057',
     fontWeight: 'bold',
     opacity: scrollA.interpolate({
-      inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT / 2, HEADER_HEIGHT],
-      outputRange: [1, 1, 0.1, 0],
+      inputRange: [0, HEADER_HEIGHT / 4, HEADER_HEIGHT / 2],
+      outputRange: [1, 0.1, 0],
+      extrapolate: 'clamp',
     }),
   }),
   contents: {
     justifyContent: 'center',
-    alignItems: 'center',
+  },
+  CategoryComponentheader: {
+    fontSize: 18,
+    color: '#495057',
+    fontWeight: '800',
+    paddingLeft: 15,
+    marginBottom: 10,
   },
 });
 

@@ -7,42 +7,43 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Irin from '../../assets/img/irin.png';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const {width, height} = Dimensions.get('window');
 
-const SearchTrainerBox = ({navigate}) => {
+// key = {listItem.class_ID}
+// name = {listItem.class_Name}
+// num  = {listItem.class_Num}
+// img = {listItem.class_Image}
+// price = {listItem.class_Price}
+// teacher_Gender = {listItem.teacher_Gender}
+
+const PtClassComponent = ({navigation, ...props}) => {
   const onPress = () => {
-    // navigate.navigate('ClassInfo');
+    navigation.navigate('ClassInfo', {
+      title: props.name,
+      classInfo: props,
+    });
   };
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>
-        <Image source={Irin} style={styles.images} />
+        <Image source={props.img} style={styles.images} />
         <View style={styles.textgroup}>
           <View style={styles.stextBox}>
-            <Text>아이린 선생님</Text>
-          </View>
-          <View style={styles.stextBox}>
-            <Text>3년차 강사</Text>
+            <Text>{props.teacher_Gender}성 트레이너</Text>
           </View>
         </View>
-        <Text style={styles.ltextBox}>에브리스포츠</Text>
+        <Text style={styles.ltextBox}>{props.name}</Text>
       </View>
       <View style={{padding: 5}}>
         <Text style={(styles.ltextBox, {fontSize: 13})}>
-          누적 수강생 수 : 1000명
+          누적 수강생 수 : {props.num}명
         </Text>
-
-        <View style={styles.reviewGroup}>
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star-half" style={styles.reviewStar} />
-          <Text style={styles.reviewCount}>(1,234)</Text>
-        </View>
+        <Text style={(styles.ltextBox, {fontSize: 22, fontWeight: '600'})}>
+          {props.price}P
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -57,6 +58,8 @@ const styles = StyleSheet.create({
     width: width / 2 - 22,
     height: height / 4.5,
     marginBottom: 5,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
   },
   textgroup: {
     flexDirection: 'row',
@@ -76,6 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   reviewGroup: {
+    alignItems: 'center',
     flexDirection: 'row',
   },
   reviewStar: {
@@ -87,4 +91,17 @@ const styles = StyleSheet.create({
     color: '#495057',
   },
 });
-export default SearchTrainerBox;
+
+/* 
+  REVIEW STAR
+  <View style={styles.reviewGroup}>
+    <FontAwesome name="star" style={styles.reviewStar} />
+    <FontAwesome name="star" style={styles.reviewStar} />
+    <FontAwesome name="star" style={styles.reviewStar} />
+    <FontAwesome name="star" style={styles.reviewStar} />
+    <FontAwesome name="star-half" style={styles.reviewStar} />
+    <Text style={styles.reviewCount}>(1,234)</Text>
+  </View> 
+*/
+
+export default PtClassComponent;

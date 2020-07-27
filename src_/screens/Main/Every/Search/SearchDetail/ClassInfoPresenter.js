@@ -8,30 +8,31 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import SGProfile from '../../assets/img/classProfile.png';
-import TrainerIntro from '../common/ClassInfo/TrainerIntro';
-import Curriculum from '../common/ClassInfo/Curriculum';
+import ClassInfo_TrainerInfo from '../../../../../components/ClassInfo_TrainerInfo';
+import ClassInfo_Curriculum from '../../../../../components/ClassInfo_Curriculum';
 
 const {height, width} = Dimensions.get('window');
-//         style={styles.   }
-const ClassInfo = () => {
+
+const ClassInfoPresenter = ({classInfo}) => {
+  const {teacher_Info, class_Info, review_List} = classInfo;
+
   return (
     <ScrollView style={styles.scrollContainer}>
-      <Image source={SGProfile} style={styles.profile} />
+      <Image source={class_Info.class_Image} style={styles.profile} />
       <View style={styles.textGroup}>
         <View style={styles.textBox}>
-          <Text>월요일, 금요일</Text>
+          <Text>무언갈</Text>
         </View>
         <View style={styles.textBox}>
-          <Text>11:00 ~ 12:00</Text>
+          <Text>보여주면</Text>
         </View>
         <View style={styles.textBox}>
-          <Text>여성</Text>
+          <Text>죠을거같다</Text>
         </View>
       </View>
       <View style={styles.pricePolicyContainer}>
         <Text style={styles.pricePolicyText}>수강료 : </Text>
-        <Text style={styles.pricePolicy}>월 66,000원</Text>
+        <Text style={styles.pricePolicy}>66000P</Text>
       </View>
       <View style={styles.srcollToGroup}>
         <TouchableOpacity style={styles.srcollToButton}>
@@ -50,26 +51,30 @@ const ClassInfo = () => {
           <Text style={styles.srcollToButtonText}>환불정책</Text>
         </TouchableOpacity>
       </View>
-      <TrainerIntro />
-      <Curriculum />
+      <View style={styles.contentsContioner}>
+        <ClassInfo_TrainerInfo info={teacher_Info} />
+        <ClassInfo_Curriculum info={class_Info} />
+      </View>
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
   },
   profile: {
     width: width,
     height: height / 3,
     opacity: 0.9,
-    marginBottom: 10,
   },
   textGroup: {
+    backgroundColor: '#ffffff',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   textBox: {
     paddingLeft: 15,
@@ -82,25 +87,34 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   pricePolicyContainer: {
+    backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
     // justifyContent: 'space-between',
     paddingRight: 20,
     paddingLeft: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
+    marginTop: 10,
     marginBottom: 10,
   },
   pricePolicyText: {
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: '500',
   },
   pricePolicy: {
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   srcollToGroup: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+    borderBottomWidth: 1,
+    borderColor: '#dee2e6',
   },
   srcollToButton: {
     backgroundColor: '#38d9a9',
@@ -114,5 +128,8 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: '900',
   },
+  contentsContioner: {
+    backgroundColor: 'white',
+  },
 });
-export default ClassInfo;
+export default ClassInfoPresenter;

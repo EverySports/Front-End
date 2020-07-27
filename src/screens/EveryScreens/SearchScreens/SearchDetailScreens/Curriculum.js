@@ -1,5 +1,5 @@
 import React from 'react';
-import SGProfile from '../../../assets/img/classProfile.png';
+import SGProfile from '../../../../assets/img/classProfile.png';
 import {StyleSheet, Text, View, Dimensions, Image} from 'react-native';
 
 const {width} = Dimensions.get('window');
@@ -8,7 +8,9 @@ const Curriculum = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>커리큘럼</Text>
-      <View style={styles.contentsContainer}></View>
+      <View style={styles.contentsContainer}>
+        <Text>asdasdads</Text>
+      </View>
     </View>
   );
 };
