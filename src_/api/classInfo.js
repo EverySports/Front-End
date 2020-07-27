@@ -28,7 +28,7 @@ const response = {
     class_SumNum: '1000',
     class_Image: classImg,
     class_Policy: '가격정책 Text',
-    class_Curriculum: '커리큘럼 Text',
+    class_Curriculum: '커리큘럼임다',
   },
   review_List: [
     {

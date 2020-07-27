@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import ClassInfo_TrainerInfo from '../../../../../components/ClassInfo_TrainerInfo';
 import ClassInfo_Curriculum from '../../../../../components/ClassInfo_Curriculum';
+import ClassInfo_Review from '../../../../../components/ClassInfo_Review';
 
 const {height, width} = Dimensions.get('window');
 
@@ -54,6 +55,7 @@ const ClassInfoPresenter = ({classInfo}) => {
       <View style={styles.contentsContioner}>
         <ClassInfo_TrainerInfo info={teacher_Info} />
         <ClassInfo_Curriculum info={class_Info} />
+        <ClassInfo_Review info={review_List} />
       </View>
     </ScrollView>
   );
