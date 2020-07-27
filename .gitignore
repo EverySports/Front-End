@@ -57,3 +57,11 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# scr Dir
+src
+# scr_ Dir
+/src_/assets
+/api
+
+
