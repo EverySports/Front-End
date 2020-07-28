@@ -33,20 +33,26 @@ const response = {
   review_List: [
     {
       user_ID: 1,
+      user_Name: '정원영',
       review_Title: '타이틀 1',
-      review_Content: '리뷰 컨텐츠 1',
+      review_Content:
+        "Hey, I was doing just fine before I met you I drink too much and that's an issue but I'm okay",
       review_CreatAt: new Date('2020/07/21'),
     },
     {
       user_ID: 2,
+      user_Name: '김원영',
       review_Title: '타이틀 2',
-      review_Content: '리뷰 컨텐츠 2',
+      review_Content:
+        "Hey, I was doing just fine before I met you I drink too much and that's an issue but I'm okay",
       review_CreatAt: new Date('2020/07/25'),
     },
     {
       user_ID: 3,
+      user_Name: '최원영',
       review_Title: '타이틀 3',
-      review_Content: '리뷰 컨텐츠 3',
+      review_Content:
+        "Hey, I was doing just fine before I met you I drink too much and that's an issue but I'm okay",
       review_CreatAt: new Date('2020/07/30'),
     },
   ],

@@ -1,8 +1,13 @@
 import React from 'react';
 import Moment from 'moment';
 import {StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
-
+import Entypo from 'react-native-vector-icons/Entypo';
 const {width} = Dimensions.get('window');
+//
+//  {review.review_Title}
+//  {review.review_Content}
+//
+//
 
 const ClassInfo_Review = ({info}) => {
   return (
@@ -12,13 +17,23 @@ const ClassInfo_Review = ({info}) => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {info.map((review) => (
             <View key={review.user_ID} style={styles.reviewContainer}>
-              <Text style={styles.reviewTitle}>{review.review_Title}</Text>
-
-              <Text style={styles.reviewContent}>{review.review_Content}</Text>
-
-              <Text style={styles.reviewCreatedAt}>
-                {Moment(review.review_CreatAt).format('Y년 M월 D일 작성')}
-              </Text>
+              <View style={styles.titleContainer}>
+                <Entypo style={styles.icon} name="pencil" />
+                <View style={styles.titleTextContainer}>
+                  <Text style={styles.reviewTitle}>{review.review_Title}</Text>
+                </View>
+              </View>
+              <View style={styles.reviewContentContainer}>
+                <Text style={styles.reviewContent}>
+                  {review.review_Content}
+                </Text>
+              </View>
+              <View style={styles.reviewCreatedInfoContainer}>
+                <Text style={styles.reviewInfo}>{review.user_Name[0]}OO님</Text>
+                <Text style={styles.reviewInfo}>
+                  {Moment(review.review_CreatAt).format('Y년 M월 D일')}
+                </Text>
+              </View>
             </View>
           ))}
         </ScrollView>
@@ -45,29 +60,59 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   reviewContainer: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingRight: 5,
-    paddingLeft: 5,
+    backgroundColor: 'white',
     width: width / 1.75,
     height: 150,
-    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 15,
+    paddingBottom: 5,
     borderRadius: 4,
-    marginRight: 10,
-    borderColor: '#38d9a9',
-    justifyContent: 'space-between',
+  },
+
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: '#adb5bd',
+  },
+
+  icon: {
+    fontSize: 20,
+  },
+  titleTextContainer: {
+    width: width / 1.75,
+    justifyContent: 'center',
+    alignItems: 'center',
+    transform: [{translateX: -20}],
   },
   reviewTitle: {
-    fontSize: 18,
     color: '#343a40',
+  },
+  reviewContentContainer: {
+    padding: 5,
   },
   reviewContent: {
-    fontSize: 16,
     color: '#343a40',
+    fontWeight: '500',
   },
-  reviewCreatedAt: {
-    fontSize: 14,
-    color: '#343a40',
+  reviewCreatedInfoContainer: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 5,
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 0,
+    width: width / 1.75,
+  },
+  reviewInfo: {
+    color: '#868e96',
   },
 });
 
