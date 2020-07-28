@@ -11,6 +11,8 @@ import {
 import ClassInfo_TrainerInfo from '../../../../../components/ClassInfo_TrainerInfo';
 import ClassInfo_Curriculum from '../../../../../components/ClassInfo_Curriculum';
 import ClassInfo_Review from '../../../../../components/ClassInfo_Review';
+import ClassInfo_Consulting from '../../../../../components/ClassInfo_Consulting';
+import ClassInfo_RefundPolicy from '../../../../../components/ClassInfo_RefundPolicy';
 
 const {height, width} = Dimensions.get('window');
 
@@ -32,8 +34,18 @@ const ClassInfoPresenter = ({classInfo}) => {
         </View>
       </View>
       <View style={styles.pricePolicyContainer}>
-        <Text style={styles.pricePolicyText}>수강료 : </Text>
-        <Text style={styles.pricePolicy}>66000P</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={styles.pricePolicyText}>수강료 : </Text>
+          <Text style={styles.pricePolicy}>66000P</Text>
+        </View>
+        <TouchableOpacity style={styles.btnApply}>
+          <Text style={styles.txtapply}>수강신청하기</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.srcollToGroup}>
         <TouchableOpacity style={styles.srcollToButton}>
@@ -56,6 +68,8 @@ const ClassInfoPresenter = ({classInfo}) => {
         <ClassInfo_TrainerInfo info={teacher_Info} />
         <ClassInfo_Curriculum info={class_Info} />
         <ClassInfo_Review info={review_List} />
+        <ClassInfo_Consulting info={teacher_Info} />
+        <ClassInfo_RefundPolicy />
       </View>
     </ScrollView>
   );
@@ -92,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
     paddingRight: 20,
     paddingLeft: 20,
     paddingTop: 20,
@@ -132,6 +146,19 @@ const styles = StyleSheet.create({
   },
   contentsContioner: {
     backgroundColor: 'white',
+  },
+  btnApply: {
+    borderRadius: 8,
+    width: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    backgroundColor: '#495057',
+  },
+  txtapply: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 export default ClassInfoPresenter;

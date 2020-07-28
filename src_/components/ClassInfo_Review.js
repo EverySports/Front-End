@@ -1,22 +1,44 @@
 import React from 'react';
 import Moment from 'moment';
-import {StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  Animated,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+
 const {width} = Dimensions.get('window');
-//
-//  {review.review_Title}
-//  {review.review_Content}
-//
-//
+const AnimatedReviewComponent = Animated.createAnimatedComponent(ScrollView);
 
 const ClassInfo_Review = ({info}) => {
+  const x = new Animated.Value(0);
+  const onScroll = Animated.event([{nativeEvent: {contentOffset: {x}}}], {
+    useNativeDriver: true,
+  });
   return (
     <View style={styles.container}>
       <Text style={styles.title}>후기</Text>
       <View style={styles.contentsContainer}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <Animated.ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={16}
+          onScroll={onScroll}>
+          {/* //
+            //
+            // */}
           {info.map((review) => (
-            <View key={review.user_ID} style={styles.reviewContainer}>
+            <Animated.View
+              key={review.user_ID}
+              style={
+                (styles.reviewContainer,
+                {
+                  transform: [{x}],
+                })
+              }>
               <View style={styles.titleContainer}>
                 <Entypo style={styles.icon} name="pencil" />
                 <View style={styles.titleTextContainer}>
@@ -34,9 +56,9 @@ const ClassInfo_Review = ({info}) => {
                   {Moment(review.review_CreatAt).format('Y년 M월 D일')}
                 </Text>
               </View>
-            </View>
+            </Animated.View>
           ))}
-        </ScrollView>
+        </Animated.ScrollView>
       </View>
     </View>
   );
@@ -63,12 +85,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: width / 1.75,
     height: 150,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    margin: 15,
+    borderColor: '#228be6',
+    borderWidth: 1,
+    margin: 4,
     paddingBottom: 5,
     borderRadius: 4,
   },
@@ -78,7 +97,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: '#adb5bd',
+    borderColor: '#228be6',
   },
 
   icon: {
@@ -113,6 +132,7 @@ const styles = StyleSheet.create({
   },
   reviewInfo: {
     color: '#868e96',
+    fontWeight: '600',
   },
 });
 
