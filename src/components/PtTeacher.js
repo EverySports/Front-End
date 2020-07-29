@@ -7,18 +7,17 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Irin from '../assets/img/irin.png';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const {width, height} = Dimensions.get('window');
 
-const PtTeacher = ({navigate, ...props}) => {
+const PtTeacher = ({navigation, ...props}) => {
   const onPress = () => {
-    // navigate.navigate('ClassInfo');
+    navigation.navigate('TeacherInfo', {
+      title: props.name,
+      info: props,
+    });
   };
-
-  const {name, sumnum, price, img} = props;
-
+  const {name, sumnum, img} = props;
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>
@@ -50,7 +49,14 @@ const PtTeacher = ({navigate, ...props}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: width / 2 - 20,
+    height: height / 3,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: '#dee2e6',
     justifyContent: 'space-between',
   },
   images: {

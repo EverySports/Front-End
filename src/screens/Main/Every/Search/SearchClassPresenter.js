@@ -9,17 +9,16 @@ const SearchClassPresenter = ({navigation, classList}) => {
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.sectionContainer}>
         {classList.map((listItem) => (
-          <View style={styles.classBox}>
-            <PtClassComponent
-              key={listItem.class_ID}
-              name={listItem.class_Name}
-              num={listItem.class_Num}
-              img={listItem.class_Image}
-              price={listItem.class_Price}
-              teacher_Gender={listItem.teacher_Gender}
-              navigation={navigation}
-            />
-          </View>
+          <PtClassComponent
+            key={listItem.class_ID}
+            id={listItem.class_ID}
+            name={listItem.class_Name}
+            num={listItem.class_Num}
+            img={listItem.class_Image}
+            price={listItem.class_Price}
+            teacher_Gender={listItem.teacher_Gender}
+            navigation={navigation}
+          />
         ))}
       </View>
       <View style={{height: 50}}></View>

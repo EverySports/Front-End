@@ -2,13 +2,14 @@ import React, {useRef} from 'react';
 import {StyleSheet, View, Text, Animated} from 'react-native';
 import Category from '../../../components/Category';
 import Slide from '../../../components/Slide';
+import LinearGradient from 'react-native-linear-gradient';
 
 const HEADER_HEIGHT = 200;
 
 const EveryPresenter = ({classes, navigation}) => {
   const scrollA = useRef(new Animated.Value(0)).current;
   const {hotClasses, newClasses} = classes;
-
+  const colors = ['#99e9f2', '#ffffff'];
   return (
     <Animated.ScrollView
       style={styles.container}
@@ -17,24 +18,35 @@ const EveryPresenter = ({classes, navigation}) => {
       })}
       scrollEventThrottle={16}>
       <Animated.View style={styles.header(scrollA)}>
-        <Animated.Text style={styles.headerText(scrollA)}>
-          <Text>나만의 트레이너 찾기</Text>
-        </Animated.Text>
+        <LinearGradient
+          colors={colors}
+          style={{
+            height: HEADER_HEIGHT,
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }}>
+          <Animated.Text style={styles.headerText(scrollA)}>
+            <Text>나만의 트레이너 찾기</Text>
+          </Animated.Text>
+        </LinearGradient>
       </Animated.View>
-      <View style={styles.contents}>
-        <View style={styles.categoryWrap}>
-          <Text style={styles.contentsHeader}>카테고리별 찾기</Text>
-          <View style={styles.categoryContainer}>
-            <Category name="요가" navigation={navigation} />
-            <Category name="필라테스" navigation={navigation} />
+
+      <View style={styles.contentsWrap}>
+        <View style={styles.contents}>
+          <View style={styles.categoryWrap}>
+            <Text style={styles.contentsHeader}>카테고리별 찾기</Text>
+            <View style={styles.categoryContainer}>
+              <Category name="요가" navigation={navigation} />
+              <Category name="필라테스" navigation={navigation} />
+            </View>
+            <View style={styles.categoryContainer}>
+              <Category name="헬스" navigation={navigation} />
+              <Category name="다이어트" navigation={navigation} />
+            </View>
           </View>
-          <View style={styles.categoryContainer}>
-            <Category name="헬스" navigation={navigation} />
-            <Category name="다이어트" navigation={navigation} />
-          </View>
+          <Slide headText="HOT Class" info={hotClasses} />
+          <Slide headText="NEW Class" info={newClasses} />
         </View>
-        <Slide headText="HOT Class" info={hotClasses} />
-        <Slide headText="NEW Class" info={newClasses} />
       </View>
     </Animated.ScrollView>
   );
@@ -48,7 +60,6 @@ const styles = StyleSheet.create({
     height: HEADER_HEIGHT,
     backgroundColor: 'white',
     justifyContent: 'center',
-    // alignItems: 'center',
     transform: [
       {
         translateY: scrollA,
@@ -75,6 +86,17 @@ const styles = StyleSheet.create({
       extrapolate: 'clamp',
     }),
   }),
+
+  contentsWrap: {
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
+    paddingRight: 5,
+    paddingLeft: 5,
+    paddingTop: 5,
+    backgroundColor: '#ffffff',
+  },
   contents: {
     justifyContent: 'center',
   },
@@ -82,6 +104,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingTop: 10,
     paddingBottom: 10,
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
   },
   contentsHeader: {
     fontSize: 18,

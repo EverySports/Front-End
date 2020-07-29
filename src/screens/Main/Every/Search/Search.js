@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import SearchClassContainer from './SearchClassContainer';
 import SearchTeacherContainer from './SearchTeacherContainer';

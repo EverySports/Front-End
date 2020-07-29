@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-
-const {width} = Dimensions.get('window');
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 
 const ClassInfo_Consulting = ({info}) => {
   return (
@@ -22,7 +13,6 @@ const ClassInfo_Consulting = ({info}) => {
               <Text style={styles.txtTrainer}> 트레이너</Text>
               <Text style={styles.txtTeacherName}>{info.teacher_Name}</Text>
             </View>
-
             <TouchableOpacity style={styles.btnConsult}>
               <Text style={styles.txtConsult}>에브리스포츠 채팅 문의하기</Text>
             </TouchableOpacity>
@@ -52,30 +42,33 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   consultingContainer: {
-    borderWidth: 2,
     borderRadius: 8,
     flexDirection: 'row',
-    borderColor: '#63e6be',
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    borderColor: 'black',
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 10,
     paddingRight: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    backgroundColor: '#ffffff',
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   profileImage: {
     width: 126,
     height: 126,
     borderRadius: 4,
-    // borderRadius: 63,
   },
   paperContainer: {
     paddingTop: 10,
     paddingBottom: 10,
     justifyContent: 'space-around',
-    // alignItems: 'center',
     marginLeft: 20,
-    // borderWidth: 1,
   },
   btnConsult: {
     borderRadius: 4,

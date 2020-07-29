@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,7 +7,6 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 import ClassInfo_TrainerInfo from '../../../../../components/ClassInfo_TrainerInfo';
 import ClassInfo_Curriculum from '../../../../../components/ClassInfo_Curriculum';
@@ -18,10 +17,14 @@ import ClassInfo_RefundPolicy from '../../../../../components/ClassInfo_RefundPo
 const {height, width} = Dimensions.get('window');
 
 const ClassInfoPresenter = ({classInfo}) => {
+  const [scrollY, setScrollY] = useState(0);
+  const [positions, setPositions] = useState(0);
   const {teacher_Info, class_Info, review_List} = classInfo;
 
   return (
-    <ScrollView style={styles.scrollContainer}>
+    <ScrollView
+      style={styles.scrollContainer}
+      ref={(scroller) => setScrollY(scroller)}>
       <View style={{zIndex: 1}}>
         <Image source={class_Info.class_Image} style={styles.profile} />
         <TouchableOpacity style={styles.btnApply}>
@@ -51,7 +54,11 @@ const ClassInfoPresenter = ({classInfo}) => {
         </View>
       </View>
       <View style={styles.srcollToGroup}>
-        <TouchableOpacity style={styles.srcollToButton}>
+        <TouchableOpacity
+          style={styles.srcollToButton}
+          onPress={() => {
+            scrollY.scrollTo({x: 0, y: 900, animatied: true});
+          }}>
           <Text style={styles.srcollToButtonText}>강사소개</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.srcollToButton}>
@@ -137,7 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     borderColor: '#dee2e6',
   },
   srcollToButton: {

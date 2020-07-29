@@ -8,6 +8,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import EveryStackNavigator from './Every/EveryStackNavigator';
+
 const ICON_SIZE = 16;
 const ICON_COLOR = '#495057';
 

@@ -1,16 +1,17 @@
 import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import classInfo, {getClassInfo} from '../../../../../modules/classInfo';
+import {getClassInfo} from '../../../../../modules/classInfo';
 import ClassInfoPresenter from './ClassInfoPresenter';
 const ClassInfoContainer = ({navigation, route}) => {
-  //const classInfo = route.params?.classInfo ?? 'non-class-information';
   const {loading, data, error} = useSelector(
     (state) => state.classInfo.classInfo,
   );
 
   const dispatch = useDispatch();
   useEffect(() => {
+    // const classID = route.params?.info.id ?? 'non-class-information';
+    // set classId for Seach by classId as keword
     //param : class_ID
     dispatch(getClassInfo());
   }, [dispatch]);

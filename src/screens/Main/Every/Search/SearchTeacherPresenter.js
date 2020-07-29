@@ -4,7 +4,7 @@ import PtTeacher from '../../../../components/PtTeacher';
 
 const {width, height} = Dimensions.get('window');
 
-const SearchTeacherPresenter = ({navigation, teacherList}) => {
+const SearchTeacherPresenter = ({navigation, teacherList, currentCategory}) => {
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.sectionContainer}>
@@ -12,11 +12,13 @@ const SearchTeacherPresenter = ({navigation, teacherList}) => {
           <View style={styles.classBox}>
             <PtTeacher
               key={teacher.teacher_ID}
+              id={teacher.teacher_ID}
               name={teacher.teacher_Name}
               sumnum={teacher.class_SumNum}
               price={teacher.class_Price}
               img={teacher.teacher_Image}
               navigation={navigation}
+              category={currentCategory}
             />
           </View>
         ))}
@@ -36,24 +38,5 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
   },
-  classBox: {
-    width: width / 2 - 20,
-    height: height / 3,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#dee2e6',
-  },
-  boxContainer: {
-    width: width / 2 - 20,
-    height: height / 2.5,
-
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 20,
-    borderWidth: 1,
-    backgroundColor: 'gold',
-  },
+  classBox: {},
 });

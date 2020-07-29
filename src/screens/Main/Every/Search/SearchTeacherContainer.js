@@ -28,6 +28,7 @@ const SearchTeacherContainer = ({navigation, currentCategory}) => {
   return (
     <SearchTeacherPresenter
       navigation={navigation}
+      currentCategory={currentCategory}
       teacherList={data.teacherList}
     />
   );

@@ -11,7 +11,6 @@ const SearchContainer = ({navigation, currentCategory}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if (data.classList) return;
     dispatch(getCategoryClassList(currentCategory));
   }, [dispatch]);
 
