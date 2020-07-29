@@ -27,9 +27,6 @@ const ClassInfo_TrainerInfo = ({info}) => {
           </View>
         </View>
         <Text style={styles.teacherContent}>{info.teacher_Content}</Text>
-        {/* //
-        //
-        // */}
         <TouchableOpacity style={styles.teacherInfoLinkWrap}>
           <Feather style={styles.teacherInfoLink} name="link" />
           <Text style={styles.teacherInfoLink}>트레이너 프로필 보기</Text>
@@ -44,7 +41,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     borderColor: '#dee2e6',
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
   },
   title: {
     color: '#20c997',

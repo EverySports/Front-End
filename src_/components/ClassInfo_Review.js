@@ -1,64 +1,33 @@
 import React from 'react';
 import Moment from 'moment';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Dimensions,
-  Animated,
-} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Dimensions} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 const {width} = Dimensions.get('window');
-const AnimatedReviewComponent = Animated.createAnimatedComponent(ScrollView);
-
+const colors = ['#ff8787', '#f783ac', '#da77f2', '#9775fa', '#748ffc'];
+const count = 0;
 const ClassInfo_Review = ({info}) => {
-  const x = new Animated.Value(0);
-  const onScroll = Animated.event([{nativeEvent: {contentOffset: {x}}}], {
-    useNativeDriver: true,
-  });
   return (
     <View style={styles.container}>
       <Text style={styles.title}>후기</Text>
       <View style={styles.contentsContainer}>
-        <Animated.ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={16}
-          onScroll={onScroll}>
-          {/* //
-            //
-            // */}
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {info.map((review) => (
-            <Animated.View
-              key={review.user_ID}
-              style={
-                (styles.reviewContainer,
-                {
-                  transform: [{x}],
-                })
-              }>
-              <View style={styles.titleContainer}>
-                <Entypo style={styles.icon} name="pencil" />
-                <View style={styles.titleTextContainer}>
-                  <Text style={styles.reviewTitle}>{review.review_Title}</Text>
-                </View>
+            <View key={review.user_ID} style={styles.reviewContainer}>
+              <View style={{justifyContent: 'center'}}>
+                <View
+                  style={{
+                    borderRadius: 1,
+                    width: 10,
+                    height: 80,
+                    backgroundColor: colors[review.user_ID - 1],
+                    borderTopRightRadius: 8,
+                    borderBottomRightRadius: 8,
+                  }}></View>
               </View>
-              <View style={styles.reviewContentContainer}>
-                <Text style={styles.reviewContent}>
-                  {review.review_Content}
-                </Text>
-              </View>
-              <View style={styles.reviewCreatedInfoContainer}>
-                <Text style={styles.reviewInfo}>{review.user_Name[0]}OO님</Text>
-                <Text style={styles.reviewInfo}>
-                  {Moment(review.review_CreatAt).format('Y년 M월 D일')}
-                </Text>
-              </View>
-            </Animated.View>
+            </View>
           ))}
-        </Animated.ScrollView>
+        </ScrollView>
       </View>
     </View>
   );
@@ -69,7 +38,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     borderColor: '#dee2e6',
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
   },
   title: {
     color: '#20c997',
@@ -83,56 +52,19 @@ const styles = StyleSheet.create({
   },
   reviewContainer: {
     backgroundColor: 'white',
-    width: width / 1.75,
+    borderRadius: 6,
+    width: width / 1.8,
     height: 150,
-    borderColor: '#228be6',
-    borderWidth: 1,
-    margin: 4,
-    paddingBottom: 5,
-    borderRadius: 4,
-  },
-
-  titleContainer: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    margin: 10,
     flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: '#228be6',
-  },
-
-  icon: {
-    fontSize: 20,
-  },
-  titleTextContainer: {
-    width: width / 1.75,
-    justifyContent: 'center',
-    alignItems: 'center',
-    transform: [{translateX: -20}],
-  },
-  reviewTitle: {
-    color: '#343a40',
-  },
-  reviewContentContainer: {
-    padding: 5,
-  },
-  reviewContent: {
-    color: '#343a40',
-    fontWeight: '500',
-  },
-  reviewCreatedInfoContainer: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 5,
-    flexDirection: 'row',
-    position: 'absolute',
-    bottom: 0,
-    width: width / 1.75,
-  },
-  reviewInfo: {
-    color: '#868e96',
-    fontWeight: '600',
   },
 });
 
