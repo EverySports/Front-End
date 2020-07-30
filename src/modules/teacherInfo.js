@@ -14,10 +14,10 @@ const initialState = {
 };
 
 //thunk function
-export const getTeacherInfo = (teacherID, category) => async (dispatch) => {
+export const getTeacherInfo = (teacherID) => async (dispatch) => {
   dispatch({type: GET_TEACHER});
   try {
-    const data = await TeacherAPI.getTeacherInfo(teacherID, category);
+    const data = await TeacherAPI.getTeacherInfo(teacherID);
     dispatch({
       type: GET_TEACHER_SUCCESS,
       data,

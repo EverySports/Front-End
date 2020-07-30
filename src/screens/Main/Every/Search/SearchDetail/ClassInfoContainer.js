@@ -30,7 +30,7 @@ const ClassInfoContainer = ({navigation, route}) => {
     );
   if (!data) return null;
 
-  return <ClassInfoPresenter classInfo={data} />;
+  return <ClassInfoPresenter navigation={navigation} classInfo={data} />;
 };
 
 export default ClassInfoContainer;

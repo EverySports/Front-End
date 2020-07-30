@@ -16,7 +16,7 @@ import ClassInfo_RefundPolicy from '../../../../../components/ClassInfo_RefundPo
 
 const {height, width} = Dimensions.get('window');
 
-const ClassInfoPresenter = ({classInfo}) => {
+const ClassInfoPresenter = ({navigation, classInfo}) => {
   const [scrollY, setScrollY] = useState(0);
   const [positions, setPositions] = useState(0);
   const {teacher_Info, class_Info, review_List} = classInfo;
@@ -75,7 +75,7 @@ const ClassInfoPresenter = ({classInfo}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.contentsContioner}>
-        <ClassInfo_TrainerInfo info={teacher_Info} />
+        <ClassInfo_TrainerInfo navigation={navigation} info={teacher_Info} />
         <ClassInfo_Curriculum info={class_Info} />
         <ClassInfo_Review info={review_List} />
         <ClassInfo_Consulting info={teacher_Info} />

@@ -1,14 +1,14 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-const ClassInfo_TrainerInfo = ({info}) => {
+const ClassInfo_TrainerInfo = ({navigation, info}) => {
+  const onPress = () => {
+    navigation.navigate('TeacherInfo', {
+      teacherId: info.teacher_ID,
+      title: info.teacher_Name,
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>강사소개</Text>
@@ -27,7 +27,7 @@ const ClassInfo_TrainerInfo = ({info}) => {
           </View>
         </View>
         <Text style={styles.teacherContent}>{info.teacher_Content}</Text>
-        <TouchableOpacity style={styles.teacherInfoLinkWrap}>
+        <TouchableOpacity style={styles.teacherInfoLinkWrap} onPress={onPress}>
           <Feather style={styles.teacherInfoLink} name="link" />
           <Text style={styles.teacherInfoLink}>트레이너 프로필 보기</Text>
         </TouchableOpacity>

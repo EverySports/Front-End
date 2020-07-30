@@ -2,47 +2,91 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Text,
   ScrollView,
   Dimensions,
-  Image,
-  Platform,
+  ImageBackground,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import TeacherInfo_About from '../../../../../components/TeacherInfo_About';
+import TeacherInfo_ClassList from '../../../../../components/TeacherInfo_ClassList';
+import TeacherInfo_ReviewList from '../../../../../components/TeacherInfo_ReviewList';
+
 const {width, height} = Dimensions.get('window');
 
 const TeacherInfoPresenter = ({navigation, info}) => {
-  const colors = ['#BBD2C5', '#536976', '#292E49'];
   return (
-    <ScrollView style={styles.scrollviewContainer}>
-      <LinearGradient colors={colors} style={styles.headerContainer}>
-        <Image style={styles.teacherImage} source={info.teacher_Image} />
-        <Text style={styles.txtTeacherName}>{info.teacher_Name}</Text>
-      </LinearGradient>
-      <View></View>
-    </ScrollView>
+    <ImageBackground style={styles.imageBackground} source={info.teacher_Image}>
+      <ScrollView>
+        <View style={styles.contentsContainer}>
+          <View style={styles.topTabBar}></View>
+          <View>
+            <TeacherInfo_About info={info} />
+            <TeacherInfo_ClassList
+              navigation={navigation}
+              info={info.class_list}
+            />
+            <TeacherInfo_ReviewList info={info.review_list} />
+          </View>
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollviewContainer: {
+  imageBackground: {
+    width: width,
+    height: height,
     flex: 1,
   },
-  headerContainer: {
-    height: height / 2,
-    paddingLeft: 20,
-    paddingTop: 20,
+  contentsContainer: {
+    borderTopRightRadius: 25,
+    borderTopLeftRadius: 25,
+
+    marginTop: height / 2,
+    width: width,
+    paddingTop: 15,
+    backgroundColor: '#ffffff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: -6,
+    },
+    shadowOpacity: 0.37,
+    shadowRadius: 7.49,
+    elevation: 12,
   },
-  teacherImage: {
-    marginTop: Platform.os === 'ios' ? 60 : 80,
-    width: 200,
-    height: 200,
-    borderRadius: 100,
+  topTabBar: {
+    position: 'absolute',
+    top: 0,
+    backgroundColor: '#fa5252',
+    width: 150,
+    height: 10,
+    marginLeft: width / 2 - 75,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+  },
+  teacherNameContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  txtTeacher: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#343a40',
+    marginLeft: 15,
   },
   txtTeacherName: {
-    color: 'white',
-    fontSize: 26,
-    fontWeight: '800',
+    marginLeft: 10,
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#343a40',
+  },
+  teacherContentContainer: {
+    padding: 10,
+  },
+  txtContent: {
+    fontSize: 16,
   },
 });
 

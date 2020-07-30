@@ -1,5 +1,4 @@
 import React from 'react';
-import {BlurView} from '@react-native-community/blur';
 import {Platform, View} from 'react-native';
 import {createStackNavigator, HeaderBackground} from '@react-navigation/stack';
 import EveryContainer from './EveryContainer';
@@ -7,6 +6,18 @@ import Search from './Search/Search';
 import ClassInfoContainer from './Search/SearchDetail/ClassInfoContainer';
 import TeacherInfoContainer from './Search/SearchDetail/TeacherInfoContainer';
 const Stack = createStackNavigator();
+
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 1000,
+    damping: 500,
+    mass: 3,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
 
 const EveryStackNavigator = () => {
   return (
@@ -29,19 +40,14 @@ const EveryStackNavigator = () => {
       <Stack.Screen
         name="TeacherInfo"
         component={TeacherInfoContainer}
-        options={
-          (({route}) => ({title: route.params.title}),
-          {
-            headerTransparent: {
-              position: 'absolute',
-              backgroundColor: 'transparent',
-              zIndex: 100,
-              top: 0,
-              left: 0,
-              right: 0,
-            },
-          })
-        }
+        options={({route}) => ({
+          title: route.params.title,
+          headerTransparent: true,
+          headerTintColor: 'black',
+          headerStyle: {
+            opacity: 0.5,
+          },
+        })}
       />
     </Stack.Navigator>
   );

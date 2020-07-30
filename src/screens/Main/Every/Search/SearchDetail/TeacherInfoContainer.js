@@ -3,16 +3,19 @@ import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import TeacherInfoPresenter from './TeacherInfoPresenter';
 import {getTeacherInfo} from '../../../../../modules/teacherInfo';
+let ID;
 const TeacherInfoContainer = ({navigation, route}) => {
-  const info = route.params?.info ?? 'non-teacher-data';
+  const info = route.params?.info ?? null;
+  const teacherId = route.params?.teacherId ?? null;
+
   const {loading, data, error} = useSelector(
     (state) => state.teacherInfo.teacherInfo,
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const {id, category} = info;
-    dispatch(getTeacherInfo(id, category));
+    info === null ? (ID = teacherId) : (ID = info.id);
+    dispatch(getTeacherInfo(ID));
   }, dispatch);
 
   if (loading)
