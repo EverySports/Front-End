@@ -2,9 +2,9 @@ import * as hotClassAPI from '../api/hotclasses';
 import * as newClassAPI from '../api/newclasses';
 
 /* action */
-const GET_CLASSES = '/classes/GET_CLASSES';
-const GET_CLASSES_SUCCESS = '/classes/GET_CLASSES_SUCCESS';
-const GET_CLASSES_ERROR = '/classes/GET_CLASSES_ERROR';
+const GET_CLASSES = 'classes/GET_CLASSES';
+const GET_CLASSES_SUCCESS = 'classes/GET_CLASSES_SUCCESS';
+const GET_CLASSES_ERROR = 'classes/GET_CLASSES_ERROR';
 
 const initialState = {
   classes: {

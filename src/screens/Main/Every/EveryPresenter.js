@@ -44,8 +44,8 @@ const EveryPresenter = ({classes, navigation}) => {
               <Category name="다이어트" navigation={navigation} />
             </View>
           </View>
-          <Slide headText="HOT Class" info={hotClasses} />
-          <Slide headText="NEW Class" info={newClasses} />
+          <Slide key={1} headText="HOT Class" info={hotClasses} />
+          <Slide key={2} headText="NEW Class" info={newClasses} />
         </View>
       </View>
     </Animated.ScrollView>

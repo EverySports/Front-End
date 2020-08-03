@@ -16,15 +16,7 @@ const Slide = ({headText, info}) => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}>
           {info.map((_info) => (
-            <PtClass
-              key={_info.class_ID}
-              num={_info.class_num}
-              classname={_info.class_name}
-              teachername={_info.teacher_name}
-              price={_info.class_price}
-              image={_info.class_image}
-              opendate={_info.class_opendate}
-            />
+            <PtClass key={_info.class_ID} info={_info} />
           ))}
         </ScrollView>
       </View>

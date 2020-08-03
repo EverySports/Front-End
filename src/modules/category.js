@@ -1,13 +1,13 @@
 import * as CategoryClassAPI from '../api/searchclasscategoty';
 import * as CategoryTeacherAPI from '../api/searchtrainercategory';
 /* action */
-const GET_CLASS = '/category/GET_CLASS';
-const GET_CLASS_SUCCESS = '/category/GET_CLASS_SUCCESS';
-const GET_CLASS_ERROR = '/category/GET_CLASS_ERROR';
+const GET_CLASS = 'category/GET_CLASS';
+const GET_CLASS_SUCCESS = 'category/GET_CLASS_SUCCESS';
+const GET_CLASS_ERROR = 'category/GET_CLASS_ERROR';
 
-const GET_TEACHER = '/category/GET_TEACHER';
-const GET_TEACHER_SUCCESS = '/category/GET_TEACHER_SUCCESS';
-const GET_TEACHER_ERROR = '/category/GET_TEACHER_ERROR';
+const GET_TEACHER = 'category/GET_TEACHER';
+const GET_TEACHER_SUCCESS = 'category/GET_TEACHER_SUCCESS';
+const GET_TEACHER_ERROR = 'category/GET_TEACHER_ERROR';
 
 const initialState = {
   searchList: {
