@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import TeacherInfoPresenter from './TeacherInfoPresenter';
 import {getTeacherInfo} from '../../../../../modules/teacherInfo';
+
 let ID;
 const TeacherInfoContainer = ({navigation, route}) => {
   const info = route.params?.info ?? null;
@@ -16,7 +17,7 @@ const TeacherInfoContainer = ({navigation, route}) => {
   useEffect(() => {
     info === null ? (ID = teacherId) : (ID = info.id);
     dispatch(getTeacherInfo(ID));
-  }, dispatch);
+  }, [dispatch]);
 
   if (loading)
     return (

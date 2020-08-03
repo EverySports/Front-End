@@ -47,7 +47,7 @@ const EveryStackNavigator = () => {
         name="Payment"
         component={PaymentContainer}
         options={({route}) => ({
-          title: '',
+          title: '수강신청',
           headerTransparent: true,
           headerTintColor: 'black',
           headerStyle: {
