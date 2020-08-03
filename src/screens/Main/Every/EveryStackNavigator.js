@@ -5,6 +5,7 @@ import EveryContainer from './EveryContainer';
 import Search from './Search/Search';
 import ClassInfoContainer from './Search/SearchDetail/ClassInfoContainer';
 import TeacherInfoContainer from './Search/SearchDetail/TeacherInfoContainer';
+import PaymentContainer from './Payment/PaymentContainer';
 const Stack = createStackNavigator();
 
 const config = {
@@ -40,12 +41,17 @@ const EveryStackNavigator = () => {
       <Stack.Screen
         name="TeacherInfo"
         component={TeacherInfoContainer}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={PaymentContainer}
         options={({route}) => ({
-          title: route.params.title,
+          title: '',
           headerTransparent: true,
           headerTintColor: 'black',
           headerStyle: {
-            opacity: 0.5,
+            opacity: 1,
           },
         })}
       />

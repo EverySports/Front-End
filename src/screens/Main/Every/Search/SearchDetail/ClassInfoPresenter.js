@@ -21,13 +21,19 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
   const [positions, setPositions] = useState(0);
   const {teacher_Info, class_Info, review_List} = classInfo;
 
+  const onPress = () => {
+    navigation.navigate('Payment', {
+      info: classInfo,
+    });
+  };
+
   return (
     <ScrollView
       style={styles.scrollContainer}
       ref={(scroller) => setScrollY(scroller)}>
       <View style={{zIndex: 1}}>
         <Image source={class_Info.class_Image} style={styles.profile} />
-        <TouchableOpacity style={styles.btnApply}>
+        <TouchableOpacity style={styles.btnApply} onPress={onPress}>
           <Text style={styles.txtapply}>수강신청하기</Text>
         </TouchableOpacity>
       </View>

@@ -32,7 +32,9 @@ const TeacherInfoContainer = ({navigation, route}) => {
     );
   if (!data) return null;
 
-  return <TeacherInfoPresenter navigation={navigation} info={data} />;
+  return (
+    <TeacherInfoPresenter navigation={navigation} route={route} info={data} />
+  );
 };
 
 export default TeacherInfoContainer;
