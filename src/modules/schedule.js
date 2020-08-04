@@ -20,11 +20,10 @@ export const getSchedule = () => async (dispatch) => {
   dispatch({type: GET_SCHEDULE});
   try {
     const response = await paymentAPI.getSchedule();
-    console.log(response);
+
     dispatch({
       type: GET_SCHEDULE_SUCCESS,
-      //user_Schedule,
-      //teacher_Schedule,
+      response,
     });
   } catch (e) {
     dispatch({
@@ -52,8 +51,8 @@ export default function schedule(state = initialState, action) {
         schedule: {
           loading: false,
           data: {
-            userSchedule: action.user_Schedule,
-            teacherSchedule: action.teacher_Schedule,
+            userSchedule: action.response.user_Schedule,
+            teacherSchedule: action.response.teacher_Schedule,
           },
           error: null,
         },
