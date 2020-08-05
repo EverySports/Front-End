@@ -43,7 +43,13 @@ const PaymentContainer = ({navigation, route}) => {
       </View>
     );
   if (!data.userSchedule && !data.teacherSchedule) return null;
-  return <PaymentPresenter schedule={data} />;
+  return (
+    <PaymentPresenter
+      navigation={navigation}
+      schedule={data}
+      classInfo={info}
+    />
+  );
 };
 
 export default PaymentContainer;

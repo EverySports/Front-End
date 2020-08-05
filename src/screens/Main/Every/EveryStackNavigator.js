@@ -6,6 +6,7 @@ import Search from './Search/Search';
 import ClassInfoContainer from './Search/SearchDetail/ClassInfoContainer';
 import TeacherInfoContainer from './Search/SearchDetail/TeacherInfoContainer';
 import PaymentContainer from './Payment/PaymentContainer';
+import PaymemtDetailContainer from './Payment/PaymemtDetailContainer';
 const Stack = createStackNavigator();
 
 const config = {
@@ -49,10 +50,16 @@ const EveryStackNavigator = () => {
         options={({route}) => ({
           title: '수강신청',
           headerTransparent: true,
-          headerTintColor: 'black',
-          headerStyle: {
-            opacity: 1,
-          },
+          headerTintColor: '#495057',
+        })}
+      />
+      <Stack.Screen
+        name="PaymentDetail"
+        component={PaymemtDetailContainer}
+        options={({route}) => ({
+          title: '수강신청 확인',
+
+          headerTintColor: '#495057',
         })}
       />
     </Stack.Navigator>

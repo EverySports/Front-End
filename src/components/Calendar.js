@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+
 //#region of constant
 const {width, height} = Dimensions.get('window');
 const [tWidth, tHeight] = [width * 0.95, height * 0.75];
@@ -18,7 +19,7 @@ const [TABLE_ELEMENTS_WIDTH, TABLE_ELEMENTS_HEIGHT] = [
   (tHeight - TABLE_HEADE_HEIGHT) / title.length,
 ];
 //#endregion
-const Calendar = ({userSchedule, teacherSchedule}) => {
+const Calendar = ({navigation, userSchedule, teacherSchedule, classInfo}) => {
   const [temp, setTemp] = useState(
     teacherSchedule.map((row) => row.map((value) => value * 2)),
   );
@@ -35,21 +36,47 @@ const Calendar = ({userSchedule, teacherSchedule}) => {
     setTemp(newTemp);
     setUser(newUser);
   };
+
+  const onPress_navigate = () => {
+    navigation.navigate('PaymentDetail', {
+      userSchedule: user,
+      info: classInfo,
+    });
+  };
+
   return (
-    <View style={styles.container}>
-      {temp.map((day, row) => (
-        <View key={row} style={styles.elementContainer}>
-          {day.map((time, col) => (
-            <TouchableOpacity
-              style={styles.btnTime(temp[row][col])}
-              key={col}
-              row={row}
-              onPress={onPress(row, col)}
-            />
-          ))}
-        </View>
-      ))}
-    </View>
+    <>
+      <TouchableOpacity
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          transform: [{translateY: -100}],
+        }}
+        onPress={onPress_navigate}>
+        <Text
+          style={{
+            fontSize: 16,
+            color: '#495057',
+          }}>
+          선택 완료
+        </Text>
+      </TouchableOpacity>
+      <View style={styles.container}>
+        {temp.map((day, row) => (
+          <View key={row} style={styles.elementContainer}>
+            {day.map((time, col) => (
+              <View style={styles.btnContainer} key={col}>
+                <TouchableOpacity
+                  style={styles.btnTime(temp[row][col])}
+                  row={row}
+                  onPress={onPress(row, col)}></TouchableOpacity>
+              </View>
+            ))}
+          </View>
+        ))}
+      </View>
+    </>
   );
 };
 
@@ -58,16 +85,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  btnTime: (value) => ({
+
+  btnContainer: {
     borderLeftWidth: 1,
     borderBottomWidth: 1,
     width: TABLE_ELEMENTS_WIDTH,
     height: TABLE_ELEMENTS_HEIGHT,
-    borderColor: TABLE_BORDER_COLOR,
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: TABLE_BORDER_COLOR,
+  },
+  btnTime: (clicked) => ({
+    width: TABLE_ELEMENTS_WIDTH - 1,
+    height: TABLE_ELEMENTS_HEIGHT - 1,
     backgroundColor:
-      value === 1 ? '#ffa8a8' : value === 0 ? 'white' : '#adb5bd',
+      clicked === 1 ? '#ffa8a8' : clicked === 0 ? 'white' : '#adb5bd',
   }),
 });
 

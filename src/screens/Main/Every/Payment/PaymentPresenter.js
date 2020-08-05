@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import Calendar from '../../../../components/Calendar';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const scheduleParser = (input) => {
   const ans = [];
@@ -23,41 +24,39 @@ const [TABLE_ELEMENTS_WIDTH, TABLE_ELEMENTS_HEIGHT] = [
 ];
 //#endregion
 
-const PaymentPresenter = ({schedule}) => {
+const PaymentPresenter = ({navigation, schedule, classInfo}) => {
   const {userSchedule, teacherSchedule} = schedule;
-
   const [_userSchedule, _teacherSchedule] = [
     scheduleParser(userSchedule),
     scheduleParser(teacherSchedule),
   ];
-
   return (
-    <>
-      <View style={styles.container}>
-        <View style={styles.table}>
-          <View style={styles.thead}>
-            {day.map((val, idx) => (
-              <View key={idx} style={styles.day}>
+    <View style={styles.container}>
+      <View style={styles.table}>
+        <View style={styles.thead}>
+          {day.map((val, idx) => (
+            <View key={idx} style={styles.day}>
+              <Text>{val}</Text>
+            </View>
+          ))}
+        </View>
+        <View style={{flexDirection: 'row'}}>
+          <View style={styles.timeContaioner}>
+            {time.map((val, key) => (
+              <View key={key} style={styles.time}>
                 <Text>{val}</Text>
               </View>
             ))}
           </View>
-          <View style={{flexDirection: 'row'}}>
-            <View style={styles.timeContaioner}>
-              {time.map((val, key) => (
-                <View key={key} style={styles.time}>
-                  <Text>{val}</Text>
-                </View>
-              ))}
-            </View>
-            <Calendar
-              userSchedule={_userSchedule}
-              teacherSchedule={_teacherSchedule}
-            />
-          </View>
+          <Calendar
+            navigation={navigation}
+            userSchedule={_userSchedule}
+            teacherSchedule={_teacherSchedule}
+            classInfo={classInfo}
+          />
         </View>
       </View>
-    </>
+    </View>
   );
 };
 
@@ -67,9 +66,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+    paddingTop: 100,
   },
   table: {
-    marginTop: 100,
     borderWidth: 1,
     width: tWidth + 1,
     height: tHeight + 1,
