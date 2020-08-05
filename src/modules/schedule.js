@@ -20,7 +20,6 @@ export const getSchedule = () => async (dispatch) => {
   dispatch({type: GET_SCHEDULE});
   try {
     const response = await paymentAPI.getSchedule();
-
     dispatch({
       type: GET_SCHEDULE_SUCCESS,
       response,

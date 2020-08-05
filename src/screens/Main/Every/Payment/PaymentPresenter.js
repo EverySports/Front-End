@@ -10,7 +10,7 @@ const scheduleParser = (input) => {
   }
   return ans;
 };
-
+//#region Def constant
 const {width, height} = Dimensions.get('window');
 const [tWidth, tHeight] = [width * 0.95, height * 0.75];
 const TABLE_HEADE_HEIGHT = 40;
@@ -21,46 +21,43 @@ const [TABLE_ELEMENTS_WIDTH, TABLE_ELEMENTS_HEIGHT] = [
   tWidth / 7 - 3,
   (tHeight - TABLE_HEADE_HEIGHT) / time.length,
 ];
-
-// const aVer
+//#endregion
 
 const PaymentPresenter = ({schedule}) => {
   const {userSchedule, teacherSchedule} = schedule;
-  const [user, teacher] = [
+
+  const [_userSchedule, _teacherSchedule] = [
     scheduleParser(userSchedule),
     scheduleParser(teacherSchedule),
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.table}>
-        <View style={styles.thead}>
-          {day.map((val, idx) => (
-            <View key={idx} style={styles.day}>
-              <Text>{val}</Text>
-            </View>
-          ))}
-        </View>
-        <View style={{flexDirection: 'row'}}>
-          <View style={styles.timeContaioner}>
-            {time.map((val, key) => (
-              <View key={key} style={styles.time}>
+    <>
+      <View style={styles.container}>
+        <View style={styles.table}>
+          <View style={styles.thead}>
+            {day.map((val, idx) => (
+              <View key={idx} style={styles.day}>
                 <Text>{val}</Text>
               </View>
             ))}
           </View>
-          {/* Time Table Elements */}
-          <View
-            style={{
-              flexDirection: 'row',
-            }}>
-            {teacher.map((day, key) => (
-              <Calendar key={key} idx={key} day={day} />
-            ))}
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.timeContaioner}>
+              {time.map((val, key) => (
+                <View key={key} style={styles.time}>
+                  <Text>{val}</Text>
+                </View>
+              ))}
+            </View>
+            <Calendar
+              userSchedule={_userSchedule}
+              teacherSchedule={_teacherSchedule}
+            />
           </View>
         </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -72,11 +69,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   table: {
-    marginTop: 80,
+    marginTop: 100,
     borderWidth: 1,
-    width: tWidth,
-    height: tHeight,
-    borderRadius: 10,
+    width: tWidth + 1,
+    height: tHeight + 1,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     borderColor: TABLE_BORDER_COLOR,
   },
   thead: {
@@ -93,27 +91,29 @@ const styles = StyleSheet.create({
     width: TABLE_ELEMENTS_WIDTH,
     height: TABLE_HEADE_HEIGHT - 1,
     borderColor: TABLE_BORDER_COLOR,
-    borderLeftWidth: 1,
+    // borderLeftWidth: 1,
   },
   timeContaioner: {
-    width: 20,
-    // borderRightWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: TABLE_BORDER_COLOR,
-    transform: [{translateY: -1}],
+    width: 20,
+    // transform: [{translateY: -1}],
   },
   time: {
     alignItems: 'center',
-    paddingTop: 2,
     height: TABLE_ELEMENTS_HEIGHT,
+    paddingTop: 2,
   },
   element: {
     width: TABLE_ELEMENTS_WIDTH,
+    height: TABLE_ELEMENTS_HEIGHT,
     borderRightWidth: 1,
     borderBottomWidth: 1,
-    height: TABLE_ELEMENTS_HEIGHT,
     borderColor: TABLE_BORDER_COLOR,
+  },
+  tableComponentsContaioner: {
+    flexDirection: 'row',
   },
 });
 
