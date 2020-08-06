@@ -12,7 +12,7 @@ import {
 const {width, height} = Dimensions.get('window');
 const [tWidth, tHeight] = [width * 0.95, height * 0.75];
 const TABLE_HEADE_HEIGHT = 40;
-const TABLE_BORDER_COLOR = '#868e96';
+const TABLE_BORDER_COLOR = '#dee2e6';
 const title = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 const [TABLE_ELEMENTS_WIDTH, TABLE_ELEMENTS_HEIGHT] = [
   tWidth / 7 - 3,
@@ -40,6 +40,7 @@ const Calendar = ({navigation, userSchedule, teacherSchedule, classInfo}) => {
   const onPress_navigate = () => {
     navigation.navigate('PaymentDetail', {
       userSchedule: user,
+      userAndTeacherSchedule: temp,
       info: classInfo,
     });
   };
@@ -84,8 +85,8 @@ const styles = StyleSheet.create({
     borderColor: TABLE_BORDER_COLOR,
   },
   btnTime: (clicked) => ({
-    width: TABLE_ELEMENTS_WIDTH - 1,
-    height: TABLE_ELEMENTS_HEIGHT - 1,
+    width: TABLE_ELEMENTS_WIDTH,
+    height: TABLE_ELEMENTS_HEIGHT - 0.5,
     backgroundColor:
       clicked === 1 ? '#ffa8a8' : clicked === 0 ? 'white' : '#adb5bd',
   }),

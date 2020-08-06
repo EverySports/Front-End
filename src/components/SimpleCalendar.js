@@ -1,21 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, Text, Dimensions} from 'react-native';
-import Calendar from '../../../../components/Calendar';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {StyleSheet, Text, View, Dimensions} from 'react-native';
 
-const scheduleParser = (input) => {
-  const ans = [];
-  const _schedule = input.split('').map((value) => parseInt(value, 10));
-  for (var i = 0; i < 7; i++) {
-    ans.push(_schedule.slice(i * 15, (i + 1) * 15));
-  }
-  return ans;
-};
 //#region Def constant
 const {width, height} = Dimensions.get('window');
-const [tWidth, tHeight] = [width * 0.95, height * 0.75];
-const TABLE_HEADE_HEIGHT = 40;
-const TABLE_BORDER_COLOR = '#dee2e6';
+const [tWidth, tHeight] = [(width * 0.95) / 1.05, (height * 0.75) / 1.3];
+const TABLE_HEADE_HEIGHT = 30;
+const TABLE_BORDER_COLOR = '#e9ecef';
 const day = ['월', '화', '수', '목', '금', '토', '일'];
 const time = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 const [TABLE_ELEMENTS_WIDTH, TABLE_ELEMENTS_HEIGHT] = [
@@ -24,14 +14,23 @@ const [TABLE_ELEMENTS_WIDTH, TABLE_ELEMENTS_HEIGHT] = [
 ];
 //#endregion
 
-const PaymentPresenter = ({navigation, schedule, classInfo}) => {
-  const {userSchedule, teacherSchedule} = schedule;
-  const [_userSchedule, _teacherSchedule] = [
-    scheduleParser(userSchedule),
-    scheduleParser(teacherSchedule),
-  ];
+const USER_COLOR = '#74c0fc';
+const TEACHER_COLOR = '#adb5bd';
+
+const SimpleCalendar = ({schedule}) => {
   return (
     <View style={styles.container}>
+      <Text style={styles.txtTitle}>트레이닝 시간표를 다시 확인해 주세요</Text>
+      <View style={styles.guideContainer}>
+        <View style={styles.colorsGuide}>
+          <View style={styles.colors(USER_COLOR)} />
+          <Text> : 선택 된 시간{'        '} </Text>
+        </View>
+        <View style={styles.colorsGuide}>
+          <View style={styles.colors(TEACHER_COLOR)} />
+          <Text> : 선택 불가능 시간</Text>
+        </View>
+      </View>
       <View style={styles.table}>
         <View style={styles.thead}>
           {day.map((val, idx) => (
@@ -48,12 +47,13 @@ const PaymentPresenter = ({navigation, schedule, classInfo}) => {
               </View>
             ))}
           </View>
-          <Calendar
-            navigation={navigation}
-            userSchedule={_userSchedule}
-            teacherSchedule={_teacherSchedule}
-            classInfo={classInfo}
-          />
+          {schedule.map((row, index) => (
+            <View key={index}>
+              {row.map((col, _index) => (
+                <View key={_index} style={styles.timeElement(col)}></View>
+              ))}
+            </View>
+          ))}
         </View>
       </View>
     </View>
@@ -64,10 +64,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'white',
-    paddingTop: 100,
   },
+  txtTitle: {
+    fontWeight: '600',
+    fontSize: 16,
+    paddingBottom: 10,
+  },
+  guideContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  colorsGuide: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  colors: (color) => ({
+    backgroundColor: color,
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+  }),
+
   table: {
     borderWidth: 1,
     width: tWidth + 1,
@@ -90,30 +109,31 @@ const styles = StyleSheet.create({
     width: TABLE_ELEMENTS_WIDTH,
     height: TABLE_HEADE_HEIGHT - 1,
     borderColor: TABLE_BORDER_COLOR,
-    // borderLeftWidth: 1,
   },
   timeContaioner: {
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: TABLE_BORDER_COLOR,
     width: 20,
-    // transform: [{translateY: -1}],
   },
   time: {
     alignItems: 'center',
     height: TABLE_ELEMENTS_HEIGHT,
     paddingTop: 2,
   },
-  element: {
-    width: TABLE_ELEMENTS_WIDTH,
-    height: TABLE_ELEMENTS_HEIGHT,
-    borderRightWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: TABLE_BORDER_COLOR,
-  },
+
   tableComponentsContaioner: {
     flexDirection: 'row',
   },
+  timeElement: (col) => ({
+    width: TABLE_ELEMENTS_WIDTH,
+    height: TABLE_ELEMENTS_HEIGHT,
+    borderLeftWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: TABLE_BORDER_COLOR,
+    backgroundColor:
+      col === 2 ? TEACHER_COLOR : col === 1 ? USER_COLOR : 'white',
+  }),
 });
 
-export default PaymentPresenter;
+export default SimpleCalendar;

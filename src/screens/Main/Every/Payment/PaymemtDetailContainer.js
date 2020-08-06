@@ -5,8 +5,9 @@ import {useSelector} from 'react-redux';
 // userSchedule: user,
 //   classInfo: classInfo,
 const PaymemtDetailContainer = ({navigation, route}) => {
-  const [userSchedule, info] = [
+  const [userSchedule, userAndTeacherSchedule, info] = [
     route.params?.userSchedule ?? null,
+    route.params?.userAndTeacherSchedule ?? null,
     route.params?.info ?? null,
   ];
   const {data} = useSelector((state) => state.user.userInfo);
@@ -14,7 +15,9 @@ const PaymemtDetailContainer = ({navigation, route}) => {
   if (!data) return null;
   return (
     <PaymentDetailPresenter
+      navigation={navigation}
       userSchedule={userSchedule}
+      userAndTeacherSchedule={userAndTeacherSchedule}
       classInfo={info}
       userInfo={data}
     />
