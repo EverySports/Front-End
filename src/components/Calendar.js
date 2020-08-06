@@ -46,21 +46,8 @@ const Calendar = ({navigation, userSchedule, teacherSchedule, classInfo}) => {
 
   return (
     <>
-      <TouchableOpacity
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          transform: [{translateY: -100}],
-        }}
-        onPress={onPress_navigate}>
-        <Text
-          style={{
-            fontSize: 16,
-            color: '#495057',
-          }}>
-          선택 완료
-        </Text>
+      <TouchableOpacity style={styles.btnNext} onPress={onPress_navigate}>
+        <Text style={styles.txtNext}>선택 완료</Text>
       </TouchableOpacity>
       <View style={styles.container}>
         {temp.map((day, row) => (
@@ -70,7 +57,8 @@ const Calendar = ({navigation, userSchedule, teacherSchedule, classInfo}) => {
                 <TouchableOpacity
                   style={styles.btnTime(temp[row][col])}
                   row={row}
-                  onPress={onPress(row, col)}></TouchableOpacity>
+                  onPress={onPress(row, col)}
+                />
               </View>
             ))}
           </View>
@@ -101,6 +89,17 @@ const styles = StyleSheet.create({
     backgroundColor:
       clicked === 1 ? '#ffa8a8' : clicked === 0 ? 'white' : '#adb5bd',
   }),
+  btnNext: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    transform: [{translateY: -70}],
+  },
+  txtNext: {
+    fontSize: 16,
+    color: '#4263eb',
+    fontWeight: '700',
+  },
 });
 
 export default Calendar;

@@ -56,7 +56,7 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
             alignItems: 'center',
           }}>
           <Text style={styles.pricePolicyText}>수강료 : </Text>
-          <Text style={styles.pricePolicy}>66000P</Text>
+          <Text style={styles.pricePolicy}>{class_Info.class_Price}P</Text>
         </View>
       </View>
       <View style={styles.srcollToGroup}>
