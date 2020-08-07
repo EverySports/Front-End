@@ -7,16 +7,8 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const {width, height} = Dimensions.get('window');
-
-// key = {listItem.class_ID}
-// name = {listItem.class_Name}
-// num  = {listItem.class_Num}
-// img = {listItem.class_Image}
-// price = {listItem.class_Price}
-// teacher_Gender = {listItem.teacher_Gender}
 
 const PtClassComponent = ({navigation, ...props}) => {
   const onPress = () => {

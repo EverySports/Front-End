@@ -33,15 +33,6 @@ const PtTeacher = ({navigation, ...props}) => {
         <Text style={(styles.ltextBox, {fontSize: 13})}>
           누적 수강생 수 : {sumnum}명
         </Text>
-
-        {/* <View style={styles.reviewGroup}>
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star" style={styles.reviewStar} />
-          <FontAwesome name="star-half" style={styles.reviewStar} />
-          <Text style={styles.reviewCount}>(1,234)</Text>
-        </View> */}
       </View>
     </TouchableOpacity>
   );

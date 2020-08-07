@@ -4,6 +4,7 @@ import {StyleSheet, Text, View, Dimensions} from 'react-native';
 const {width} = Dimensions.get('window');
 
 const ClassInfo_RefundPolicy = ({info}) => {
+  // const refundPolicy = info.class_RefundPolicy
   return (
     <View style={styles.container}>
       <Text style={styles.title}>환불정책</Text>
@@ -12,7 +13,7 @@ const ClassInfo_RefundPolicy = ({info}) => {
         <Text>
           "Hey, I was doing just fine before I met you I drink too much and
           that's an issue but I'm okay Hey, you tell your friends it was nice to
-          meet them But I hope I never see them again",{' '}
+          meet them But I hope I never see them again"
         </Text>
       </View>
     </View>

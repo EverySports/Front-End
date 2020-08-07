@@ -2,8 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import PaymentDetailPresenter from './PaymentDetailPresenter';
 import {useSelector} from 'react-redux';
-// userSchedule: user,
-//   classInfo: classInfo,
+
 const PaymemtDetailContainer = ({navigation, route}) => {
   const [userSchedule, userAndTeacherSchedule, info] = [
     route.params?.userSchedule ?? null,

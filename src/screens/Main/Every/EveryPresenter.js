@@ -10,7 +10,7 @@ const EveryPresenter = ({classes, navigation}) => {
   const scrollA = useRef(new Animated.Value(0)).current;
   const {hotClasses, newClasses} = classes;
   const colors = ['#99e9f2', '#ffffff'];
-  // const colors = ['#FFEEEE', '#DDEFBB'];
+
   return (
     <Animated.ScrollView
       style={styles.container}

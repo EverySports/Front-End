@@ -1,5 +1,3 @@
-//
-//#region  import lib
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -17,8 +15,6 @@ import EverySports from '../../../../assets/img/EverySports.png';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-//#endregion
-//
 
 const {width, height} = Dimensions.get('window');
 
