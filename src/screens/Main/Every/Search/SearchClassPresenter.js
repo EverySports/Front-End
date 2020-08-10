@@ -6,7 +6,7 @@ const {width, height} = Dimensions.get('window');
 
 const SearchClassPresenter = ({navigation, classList}) => {
   return (
-    <ScrollView style={styles.scrollContainer}>
+    <ScrollView>
       <View style={styles.sectionContainer}>
         {classList.map((listItem) => (
           <PtClassComponent
@@ -27,31 +27,10 @@ const SearchClassPresenter = ({navigation, classList}) => {
 };
 
 const styles = StyleSheet.create({
-  scrollContainer: {},
   sectionContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
-  },
-  classBox: {
-    width: width / 2 - 20,
-    height: height / 2.7,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#dee2e6',
-  },
-  boxContainer: {
-    width: width / 2 - 20,
-    height: height / 2.5,
-
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 20,
-    borderWidth: 1,
-    backgroundColor: 'gold',
   },
 });
 

@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  Platform,
 } from 'react-native';
 import Monent from 'moment';
 const {width} = Dimensions.get('window');
@@ -25,16 +26,16 @@ const PtClass = ({info}) => {
   ];
   return (
     <TouchableOpacity style={styles.container}>
-      <Image source={class_image} style={styles.profile} />
+      <Image source={class_image} style={styles.imgProfile} />
       <View style={styles.infoContainer}>
-        <Text style={styles.classname}>{class_name}</Text>
-        <Text style={styles.trainer}>{teacher_name} 트레이너</Text>
+        <Text style={styles.txtClassname}>{class_name}</Text>
+        <Text style={styles.txtTeacher}>{teacher_name} 트레이너</Text>
         {class_num && (
           <View style={styles.priceGroup}>
-            <View style={styles.hotIcon}>
-              <Text style={styles.hotText}>HOT</Text>
+            <View style={styles.iconHot}>
+              <Text style={styles.txtHot}>HOT</Text>
             </View>
-            <Text style={styles.num}>누적 수강생 : {class_num}</Text>
+            <Text style={styles.txtSumnum}>누적 수강생 : {class_num}</Text>
           </View>
         )}
         {class_opendate && (
@@ -64,24 +65,23 @@ const styles = StyleSheet.create({
     width: width / 2.5,
     marginRight: 10,
   },
-  profile: {
+  imgProfile: {
     borderRadius: 4,
     width: width / 2.5,
     height: 160,
-    resizeMode: 'center',
   },
   infoContainer: {
     paddingTop: 5,
     paddingLeft: 5,
   },
-  classname: {
+  txtClassname: {
     fontWeight: '700',
     fontSize: 16,
     marginBottom: 5,
     color: '#343a40',
   },
-  trainer: {
-    fontWeight: '500',
+  txtTeacher: {
+    fontWeight: 'bold',
     marginBottom: 5,
     color: '#343a40',
   },
@@ -89,13 +89,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 5,
   },
-  num: {
-    color: '#343a40',
+  txtSumnum: {
+    ...Platform.select({
+      android: {
+        fontSize: 12,
+        fontWeight: 'bold',
+      },
+      default: {
+        color: '#343a40',
+        fontWeight: '600',
+      },
+    }),
   },
   price: {
     fontSize: 22,
     fontWeight: '500',
-
     color: '#343a40',
   },
   point: {
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 5,
   },
-  hotIcon: {
+  iconHot: {
     backgroundColor: '#ff6b6b',
     borderRadius: 4,
     paddingTop: 2,
@@ -118,7 +126,7 @@ const styles = StyleSheet.create({
     paddingRight: 3,
     marginRight: 5,
   },
-  hotText: {
+  txtHot: {
     color: 'white',
     fontWeight: '700',
     fontSize: 12,

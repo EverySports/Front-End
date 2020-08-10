@@ -53,14 +53,14 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
     paddingBottom: 10,
-    borderColor: '#dee2e6',
+    borderColor: '#f1f3f5',
     borderBottomWidth: 1,
   },
   title: {
     color: '#20c997',
     fontSize: 16,
     marginLeft: 10,
-    fontWeight: '800',
+    fontWeight: 'bold',
     marginBottom: 15,
   },
   contentsContainer: {

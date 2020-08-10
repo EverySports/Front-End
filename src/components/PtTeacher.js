@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
-
+const CONTAINER_WIDTH = width / 2 - 20;
+const CONTAINER_HEIGHT = height / 2.7;
 const PtTeacher = ({navigation, ...props}) => {
   const onPress = () => {
     navigation.navigate('TeacherInfo', {
@@ -19,20 +20,18 @@ const PtTeacher = ({navigation, ...props}) => {
   };
   const {name, sumnum, img} = props;
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <View>
-        <Image source={img} style={styles.images} />
-        <View style={styles.textgroup}>
-          <View style={styles.stextBox}>
-            <Text>{name} 트레이너</Text>
-          </View>
+    <TouchableOpacity style={{marginLeft: 13}} onPress={onPress}>
+      <Image source={img} style={styles.imgProfile} />
+      <View style={styles.classInfoContents}>
+        <View style={styles.teacherName}>
+          <Text style={styles.txtTeacherName}>{name} 트레이너</Text>
         </View>
-        <Text style={styles.ltextBox}>에브리스포츠</Text>
-      </View>
-      <View style={{padding: 5}}>
-        <Text style={(styles.ltextBox, {fontSize: 13})}>
-          누적 수강생 수 : {sumnum}명
-        </Text>
+        <View style={styles.contents}>
+          <Text style={{}}>에브리스포츠</Text>
+        </View>
+        <View style={styles.contents}>
+          <Text style={styles.txtSumNum}>보유 회원 수 : {sumnum}명</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -40,48 +39,55 @@ const PtTeacher = ({navigation, ...props}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: width / 2 - 20,
-    height: height / 3,
+    justifyContent: 'space-between',
+    width: CONTAINER_WIDTH,
+    height: CONTAINER_HEIGHT,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 20,
-    borderWidth: 1,
     borderRadius: 4,
     borderColor: '#dee2e6',
-    justifyContent: 'space-between',
   },
-  images: {
-    width: width / 2 - 22,
-    height: height / 4.5,
-    marginBottom: 5,
+  imgProfile: {
+    width: CONTAINER_WIDTH,
+    height: CONTAINER_HEIGHT / 1.65,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4,
   },
-  textgroup: {
-    flexDirection: 'row',
-    paddingLeft: 5,
-    justifyContent: 'center',
-  },
-  stextBox: {
-    padding: 3,
-    marginRight: 10,
+
+  classInfoContents: {
+    width: CONTAINER_WIDTH,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f1f3f5',
-    borderRadius: 10,
+    marginBottom: 20,
+    borderWidth: 1,
+    padding: 5,
+    borderColor: '#adb5bd',
+    borderBottomLeftRadius: 4,
+    borderBottomRightRadius: 4,
+    borderTopWidth: 0,
   },
-  ltextBox: {
+
+  teacherName: {
     padding: 3,
-    fontSize: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
   },
-  reviewGroup: {
-    flexDirection: 'row',
-  },
-  reviewStar: {
-    color: '#e67700',
-  },
-  reviewCount: {
-    marginLeft: 5,
+  txtTeacherName: {
+    color: '#343a40',
     fontSize: 14,
+    fontWeight: 'bold',
+  },
+  contents: {
+    width: CONTAINER_WIDTH,
+    marginBottom: 3,
+    paddingLeft: 5,
+    paddingTop: 3,
+  },
+  txtSumNum: {
     color: '#495057',
+    fontWeight: 'bold',
   },
 });
 export default PtTeacher;

@@ -6,9 +6,11 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
+const CONTAINER_HEIGHT = height / 2.7;
 
 const PtClassComponent = ({navigation, ...props}) => {
   const onPress = () => {
@@ -19,88 +21,87 @@ const PtClassComponent = ({navigation, ...props}) => {
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <View>
-        <Image source={props.img} style={styles.images} />
-        <View style={styles.textgroup}>
-          <View style={styles.stextBox}>
-            <Text>{props.teacher_Gender}성 트레이너</Text>
-          </View>
+    <TouchableOpacity style={{marginLeft: 13}} onPress={onPress}>
+      <Image source={props.img} style={styles.imgProfile} />
+      <View style={styles.classInfoContents}>
+        <View style={styles.teacherGender}>
+          <Text style={styles.txtTeacherGender}>
+            {props.teacher_Gender}성 트레이너
+          </Text>
         </View>
-        <Text style={styles.ltextBox}>{props.name}</Text>
-      </View>
-      <View style={{padding: 5}}>
-        <Text style={(styles.ltextBox, {fontSize: 13})}>
-          누적 수강생 수 : {props.num}명
-        </Text>
-        <Text style={(styles.ltextBox, {fontSize: 22, fontWeight: '600'})}>
-          {props.price}P
-        </Text>
+        <View style={styles.className}>
+          <Text style={styles.txtClassName} numberOfLines={2}>
+            {props.name}
+          </Text>
+        </View>
+        <View style={styles.sunNum}>
+          <Text style={{color: '#343a40'}}>누적 수강생 수 : {props.num}명</Text>
+        </View>
+        <View style={styles.price}>
+          <Text style={styles.txtPrice}>{props.price}P</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-between',
+  imgProfile: {
     width: width / 2 - 20,
-    height: height / 2.7,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 20,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#dee2e6',
-  },
-  images: {
-    width: width / 2 - 22,
-    height: height / 4.5,
-    marginBottom: 5,
+    height: CONTAINER_HEIGHT / 1.65,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
   },
-  textgroup: {
-    flexDirection: 'row',
-    paddingLeft: 5,
+
+  classInfoContents: {
+    width: width / 2 - 20,
     justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    borderWidth: 1,
+    padding: 5,
+    borderColor: '#adb5bd',
+    borderBottomLeftRadius: 4,
+    borderBottomRightRadius: 4,
+    borderTopWidth: 0,
   },
-  stextBox: {
+
+  teacherGender: {
     padding: 3,
-    marginRight: 10,
+
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f1f3f5',
     borderRadius: 10,
   },
-  ltextBox: {
+  txtTeacherGender: {
+    color: '#343a40',
+    fontSize: 10,
+    fontWeight: 'bold',
+  },
+  className: {
+    width: width / 2 - 22,
     padding: 3,
-    fontSize: 16,
+    height: 40,
   },
-  reviewGroup: {
-    alignItems: 'center',
-    flexDirection: 'row',
+  txtClassName: {
+    color: '#343a40',
+    fontWeight: 'bold',
   },
-  reviewStar: {
-    color: '#e67700',
+  sunNum: {
+    padding: 5,
+    width: width / 2 - 22,
   },
-  reviewCount: {
-    marginLeft: 5,
-    fontSize: 14,
-    color: '#495057',
+  price: {
+    paddingLeft: 5,
+    width: width / 2 - 22,
+  },
+  txtPrice: {
+    color: '#343a40',
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#ff6b6b',
   },
 });
-
-/* 
-  REVIEW STAR
-  <View style={styles.reviewGroup}>
-    <FontAwesome name="star" style={styles.reviewStar} />
-    <FontAwesome name="star" style={styles.reviewStar} />
-    <FontAwesome name="star" style={styles.reviewStar} />
-    <FontAwesome name="star" style={styles.reviewStar} />
-    <FontAwesome name="star-half" style={styles.reviewStar} />
-    <Text style={styles.reviewCount}>(1,234)</Text>
-  </View> 
-*/
 
 export default PtClassComponent;

@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View, Text, Animated} from 'react-native';
+import {StyleSheet, View, Text, Animated, Platform} from 'react-native';
 import Category from '../../../components/Category';
 import Slide from '../../../components/Slide';
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,7 +9,7 @@ const HEADER_HEIGHT = 200;
 const EveryPresenter = ({classes, navigation}) => {
   const scrollA = useRef(new Animated.Value(0)).current;
   const {hotClasses, newClasses} = classes;
-  const colors = ['#99e9f2', '#ffffff'];
+  const colors = ['#ffa8a8', '#ffffff'];
 
   return (
     <Animated.ScrollView
@@ -75,9 +75,9 @@ const styles = StyleSheet.create({
   }),
   headerText: (scrollA) => ({
     position: 'absolute',
+    bottom: 60,
     marginTop: 0,
     marginLeft: 20,
-    bottom: 50,
     fontSize: 24,
     color: '#495057',
     fontWeight: 'bold',
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   contentsHeader: {
     fontSize: 18,
     color: '#495057',
-    fontWeight: '800',
+    fontWeight: '700',
     paddingLeft: 15,
     marginBottom: 10,
   },
