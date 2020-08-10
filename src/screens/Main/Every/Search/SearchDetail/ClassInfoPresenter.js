@@ -79,7 +79,6 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
       [name]: height,
     };
     setComponentsHeight(temp);
-    console.log(componentsHeight);
   };
 
   return (

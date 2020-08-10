@@ -8,6 +8,8 @@ import {
   Animated,
   Text,
   TouchableOpacity,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import TeacherInfo_About from '../../../../../components/TeacherInfo_About';
 import TeacherInfo_ClassList from '../../../../../components/TeacherInfo_ClassList';
@@ -26,7 +28,6 @@ const TeacherInfoPresenter = ({navigation, route, info}) => {
       <ImageBackground
         style={styles.imageBackground}
         source={info.teacher_Image}></ImageBackground>
-
       <TouchableOpacity style={styles.btnGoBack} onPress={onPress}>
         <Ionicons style={styles.iconGoBack} name="md-chevron-back" />
       </TouchableOpacity>
@@ -69,7 +70,6 @@ const styles = StyleSheet.create({
   },
   headerContainer: (scrollY) => ({
     width: width,
-    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#ffffff',
@@ -81,6 +81,15 @@ const styles = StyleSheet.create({
       extrapolate: 'clamp',
     }),
     zIndex: 0,
+    // ...Platform.select({
+    //   ios: {
+    //     height: 80,
+    //   },
+    //   android: {
+    //     height: 43,
+    //   },
+    // }),
+    height: 40,
   }),
   headerContents: {
     position: 'absolute',
@@ -92,12 +101,20 @@ const styles = StyleSheet.create({
   },
   btnGoBack: {
     position: 'absolute',
-    top: 45,
+    ...Platform.select({
+      ios: {
+        top: 40,
+      },
+      android: {
+        top: 0,
+      },
+    }),
     left: 5,
     zIndex: 9,
+    top: 10,
   },
   iconGoBack: {
-    fontSize: 32,
+    fontSize: 40,
   },
   txtTitle: {
     fontSize: 16,
