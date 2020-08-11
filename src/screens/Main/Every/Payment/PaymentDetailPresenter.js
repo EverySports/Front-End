@@ -9,15 +9,17 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
+//#region  import lib
 import Calendar from '../../../../assets/img/calendar.png';
 import SimpleCalendar from '../../../../components/SimpleCalendar';
 import EverySports from '../../../../assets/img/EverySports.png';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+//#endregion
 const {width, height} = Dimensions.get('window');
 
+//#region CalendarConfirmPopup
 const CalendarConfirmPopup = ({
   navigation,
   schedule,
@@ -78,7 +80,8 @@ const CalendarConfirmPopup = ({
     </View>
   );
 };
-
+//#endregion
+//#region AcceptTheTerms
 const AcceptTheTerms = ({onToggle_AcceptTheTerms, setChecked, checked}) => {
   const onPress = () => {
     setChecked({
@@ -116,6 +119,7 @@ const AcceptTheTerms = ({onToggle_AcceptTheTerms, setChecked, checked}) => {
     </View>
   );
 };
+//#endregion
 
 const PaymentDetailPresenter = ({
   navigation,
@@ -161,7 +165,7 @@ const PaymentDetailPresenter = ({
           setChecked={setChecked}
         />
       )}
-      <ScrollView>
+      <ScrollView style={{backgroundColor: '#ffffff'}}>
         <View style={styles.container}>
           <View style={styles.classInfoContainer}>
             <Text style={styles.txtTitle}>신청 클래스 정보</Text>
@@ -306,7 +310,7 @@ const styles = StyleSheet.create({
   },
   txtTitle: {
     fontSize: 16,
-    fontWeight: '800',
+    fontWeight: 'bold',
     color: '#ff6b6b',
   },
   classInfo: {
@@ -327,19 +331,21 @@ const styles = StyleSheet.create({
   },
   txtTitle: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: '#495057',
   },
   txtClassInfo: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
     borderWidth: 2,
     borderRadius: 4,
     borderColor: '#ff6b6b',
-    padding: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
     paddingTop: 3,
     paddingBottom: 3,
     marginTop: 5,
+    textAlignVertical: 'center',
   },
   confirmsContentsContainer: {
     marginTop: 10,
@@ -371,8 +377,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   imgComponent2: {
-    width: 175,
-    height: 175,
+    width: width / 2 - 40,
+    height: height / 4 - 40,
     borderRadius: 10,
   },
   opacityBlock: {
@@ -392,7 +398,7 @@ const styles = StyleSheet.create({
   txtContent: {
     fontSize: 14,
     color: '#343a40',
-    fontWeight: '800',
+    fontWeight: 'bold',
   },
   AcceptTermsContainer: {
     width: width / 2 - 40,
@@ -440,7 +446,7 @@ const styles = StyleSheet.create({
   },
   txtPoint: {
     color: '#fa5252',
-    fontWeight: '800',
+    fontWeight: 'bold',
     fontSize: 15,
   },
   btnPayment: {
@@ -451,10 +457,11 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   txtPayment: {
     color: '#ffffff',
-    fontWeight: '800',
+    fontWeight: 'bold',
     fontSize: 20,
   },
 });
@@ -512,7 +519,7 @@ const popup_styles = StyleSheet.create({
   txtToggle: {
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: 'bold',
   },
   //
   //  Accept the Terms Popup Styles
