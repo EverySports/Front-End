@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text, Dimensions, Image} from 'react-native';
 
-const {width, height} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const TeacherInfo_ClassListItem = ({info}) => {
   return (
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 16,
     color: '#343a40',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   txtclassNum: {
     paddingTop: 5,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 14,
     color: '#f03e3e',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 });
 

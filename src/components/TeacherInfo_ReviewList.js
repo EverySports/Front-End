@@ -29,32 +29,8 @@ const styles = StyleSheet.create({
     color: '#ff6b6b',
     fontSize: 16,
     marginLeft: 10,
-    fontWeight: '800',
+    fontWeight: 'bold',
     marginBottom: 15,
-  },
-  contentsContainer: {},
-  teacherNameContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-  },
-  txtTeacher: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#343a40',
-    marginLeft: 15,
-  },
-  txtTeacherName: {
-    marginLeft: 10,
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#343a40',
-  },
-  teacherContentContainer: {
-    padding: 10,
-  },
-  txtContent: {
-    fontSize: 16,
   },
 });
 export default TeacherInfo_ReviewList;

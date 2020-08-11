@@ -139,6 +139,10 @@ const PaymentDetailPresenter = ({
     setTerms(!terms);
   };
 
+  const onFinalConfirm = () => {
+    return null;
+  };
+
   return (
     <>
       {calendar && (
@@ -157,118 +161,124 @@ const PaymentDetailPresenter = ({
           setChecked={setChecked}
         />
       )}
-      <View style={styles.container}>
-        <View style={styles.classInfoContainer}>
-          <Text style={styles.txtTitle}>신청 클래스 정보</Text>
-          <View style={styles.classInfo}>
-            <Image
-              source={class_Info.class_Image}
-              style={styles.imgClassImage}
-            />
-            <View style={styles.classInfoTextContainer}>
-              <View>
-                <Text style={styles.txtTitle}>신청 클래스 이름</Text>
-                <Text style={styles.txtClassInfo}>{class_Info.class_Name}</Text>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.classInfoContainer}>
+            <Text style={styles.txtTitle}>신청 클래스 정보</Text>
+            <View style={styles.classInfo}>
+              <Image
+                source={class_Info.class_Image}
+                style={styles.imgClassImage}
+              />
+              <View style={styles.classInfoTextContainer}>
+                <View>
+                  <Text style={styles.txtTitle}>신청 클래스 이름</Text>
+                  <Text style={styles.txtClassInfo}>
+                    {class_Info.class_Name}
+                  </Text>
+                </View>
+                <View style={{marginTop: 10}}>
+                  <Text style={styles.txtTitle}>클래스 트레이너</Text>
+                  <Text style={styles.txtClassInfo}>
+                    {teacher_Info.teacher_Name} 트레이너
+                  </Text>
+                </View>
               </View>
-              <View style={{marginTop: 10}}>
-                <Text style={styles.txtTitle}>클래스 트레이너</Text>
-                <Text style={styles.txtClassInfo}>
-                  {teacher_Info.teacher_Name} 트레이너
+            </View>
+          </View>
+          <View style={styles.confirmsContentsContainer}>
+            <Text style={styles.txtTitle}>필수 확인 내용</Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+              }}>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <TouchableOpacity
+                  style={styles.calendarContainer}
+                  name={calendar}
+                  onPress={onToggle_Calendar}>
+                  <Image style={styles.imgComponent} source={Calendar} />
+                  <View style={styles.opacityBlock} />
+                  <View style={styles.contentsTextContainer}>
+                    <Text style={styles.txtContent}>
+                      선택한 시간을 확인하세요
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+
+                {!checked.x ? (
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="checkbox-blank-circle-outline"
+                  />
+                ) : (
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="checkbox-marked-circle-outline"
+                  />
+                )}
+              </View>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <TouchableOpacity
+                  style={styles.AcceptTermsContainer}
+                  onPress={onToggle_AcceptTheTerms}>
+                  <Image style={styles.imgComponent2} source={EverySports} />
+                  <View style={styles.contentsTextContainer}>
+                    <Text style={styles.txtContent}>
+                      구매 약관을 확인하세요
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+                {!checked.y ? (
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="checkbox-blank-circle-outline"
+                  />
+                ) : (
+                  <MaterialCommunityIcons
+                    style={styles.icon}
+                    name="checkbox-marked-circle-outline"
+                  />
+                )}
+              </View>
+            </View>
+          </View>
+          <View style={styles.paymentInfoContainer}>
+            <Text style={styles.txtTitle}>결제 정보</Text>
+            <View style={styles.paymentContents}>
+              <View style={styles.pointInfo}>
+                <Text style={styles.txtTitle}>보유 포인트</Text>
+                <Text style={styles.txtPoint}>{userInfo.user_Point}P</Text>
+              </View>
+              <FontAwesome name="minus" />
+              <View style={styles.pointInfo}>
+                <Text style={styles.txtTitle}>차감 포인트</Text>
+                <Text style={styles.txtPoint}>{class_Info.class_Price}P</Text>
+              </View>
+              <FontAwesome5 name="equals" />
+              <View style={styles.pointInfo}>
+                <Text style={styles.txtTitle}>결제 후 잔여 포인트</Text>
+                <Text style={styles.txtPoint}>
+                  {userInfo.user_Point - class_Info.class_Price}P
                 </Text>
               </View>
             </View>
           </View>
-        </View>
-        <View style={styles.confirmsContentsContainer}>
-          <Text style={styles.txtTitle}>필수 확인 내용</Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-            }}>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <TouchableOpacity
-                style={styles.calendarContainer}
-                name={calendar}
-                onPress={onToggle_Calendar}>
-                <Image style={styles.imgComponent} source={Calendar} />
-                <View style={styles.opacityBlock} />
-                <View style={styles.contentsTextContainer}>
-                  <Text style={styles.txtContent}>
-                    선택한 시간을 확인하세요
-                  </Text>
-                </View>
-              </TouchableOpacity>
 
-              {!checked.x ? (
-                <MaterialCommunityIcons
-                  style={styles.icon}
-                  name="checkbox-blank-circle-outline"
-                />
-              ) : (
-                <MaterialCommunityIcons
-                  style={styles.icon}
-                  name="checkbox-marked-circle-outline"
-                />
-              )}
-            </View>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <TouchableOpacity
-                style={styles.AcceptTermsContainer}
-                onPress={onToggle_AcceptTheTerms}>
-                <Image style={styles.imgComponent2} source={EverySports} />
-                <View style={styles.contentsTextContainer}>
-                  <Text style={styles.txtContent}>구매 약관을 확인하세요</Text>
-                </View>
-              </TouchableOpacity>
-              {!checked.y ? (
-                <MaterialCommunityIcons
-                  style={styles.icon}
-                  name="checkbox-blank-circle-outline"
-                />
-              ) : (
-                <MaterialCommunityIcons
-                  style={styles.icon}
-                  name="checkbox-marked-circle-outline"
-                />
-              )}
-            </View>
-          </View>
+          <TouchableOpacity style={styles.btnPayment} onPress={onFinalConfirm}>
+            <Text style={styles.txtPayment}>결제하기</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.paymentInfoContainer}>
-          <Text style={styles.txtTitle}>결제 정보</Text>
-          <View style={styles.paymentContents}>
-            <View style={styles.pointInfo}>
-              <Text style={styles.txtTitle}>보유 포인트</Text>
-              <Text style={styles.txtPoint}>{userInfo.user_Point}P</Text>
-            </View>
-            <FontAwesome name="minus" />
-            <View style={styles.pointInfo}>
-              <Text style={styles.txtTitle}>차감 포인트</Text>
-              <Text style={styles.txtPoint}>{class_Info.class_Price}P</Text>
-            </View>
-            <FontAwesome5 name="equals" />
-            <View style={styles.pointInfo}>
-              <Text style={styles.txtTitle}>결제 후 잔여 포인트</Text>
-              <Text style={styles.txtPoint}>
-                {userInfo.user_Point - class_Info.class_Price}P
-              </Text>
-            </View>
-          </View>
-        </View>
-
-        <TouchableOpacity style={styles.btnPayment} onPress={onFinalConfirm}>
-          <Text style={styles.txtPayment}>결제하기</Text>
-        </TouchableOpacity>
-      </View>
+      </ScrollView>
     </>
   );
 };

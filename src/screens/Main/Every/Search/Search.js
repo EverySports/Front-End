@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  Platform,
 } from 'react-native';
 import SearchClassContainer from './SearchClassContainer';
 import SearchTeacherContainer from './SearchTeacherContainer';
@@ -20,12 +19,12 @@ const Search = ({navigation, route}) => {
       <View style={styles.menugroup}>
         <TouchableOpacity onPress={() => setState('class')}>
           <View style={styles.menu}>
-            <Text style={styles.menuText}>클래스 찾기</Text>
+            <Text style={styles.txtMenu}>클래스 찾기</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setState('trainer')}>
           <View style={styles.menu}>
-            <Text style={styles.menuText}>트레이너 찾기</Text>
+            <Text style={styles.txtMenu}>트레이너 찾기</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -62,10 +61,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  menuText: {
+  txtMenu: {
     color: '#495057',
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   pointerContainer: {
     flexDirection: 'row',

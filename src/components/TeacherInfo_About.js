@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     color: '#ff6b6b',
     fontSize: 16,
     marginLeft: 10,
-    fontWeight: '800',
+    fontWeight: 'bold',
     marginBottom: 15,
   },
-  contentsContainer: {},
+
   imgTeacherImage: {
     width: 100,
     height: 100,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   txtTeacher: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: '#343a40',
     marginLeft: 15,
     paddingBottom: 10,
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   txtTeacherName: {
     marginLeft: 50,
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: 'bold',
     color: '#343a40',
   },
   teacherContentContainer: {

@@ -1,50 +1,25 @@
-import React, {useState, useRef} from 'react';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Dimensions,
-  ImageBackground,
-  Animated,
-  Text,
-  TouchableOpacity,
-  Platform,
-  StatusBar,
-} from 'react-native';
+import React, {useRef, useEffect} from 'react';
+import {StyleSheet, View, Dimensions, Image, Animated} from 'react-native';
 import TeacherInfo_About from '../../../../../components/TeacherInfo_About';
 import TeacherInfo_ClassList from '../../../../../components/TeacherInfo_ClassList';
 import TeacherInfo_ReviewList from '../../../../../components/TeacherInfo_ReviewList';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+
 const {width, height} = Dimensions.get('window');
-const MAX = 500;
+
 const TeacherInfoPresenter = ({navigation, route, info}) => {
   const scrollY = useRef(new Animated.Value(0)).current;
-  const onPress = () => {
-    navigation.goBack();
-  };
 
   return (
     <>
-      <ImageBackground
-        style={styles.imageBackground}
-        source={info.teacher_Image}></ImageBackground>
-      <TouchableOpacity style={styles.btnGoBack} onPress={onPress}>
-        <Ionicons style={styles.iconGoBack} name="md-chevron-back" />
-      </TouchableOpacity>
-      <Animated.View style={styles.headerContainer(scrollY)}>
-        <View style={styles.headerContents}>
-          <Text style={styles.txtTitle}>{route.params.info.name}</Text>
-        </View>
-      </Animated.View>
-
+      <Image style={styles.imageBackground} source={info.teacher_Image} />
       <Animated.ScrollView
-        style={styles.scrollConatiner}
-        overScrollMode="never"
-        onScroll={Animated.event(
-          [{nativeEvent: {contentOffset: {y: scrollY}}}],
-          {useNativeDriver: true},
-        )}
-        scrollEventThrottle={16}>
+        showsVerticalScrollIndicator={false}
+        // onScroll={Animated.event(
+        //   [{nativeEvent: {contentOffset: {y: scrollY}}}],
+        //   {useNativeDriver: true},
+        // )}
+        // scrollEventThrottle={16}
+      >
         <View style={styles.contentsContainer}>
           <View style={styles.topTabBar}></View>
           <View>
@@ -68,29 +43,7 @@ const styles = StyleSheet.create({
     height: height,
     flex: 1,
   },
-  headerContainer: (scrollY) => ({
-    width: width,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderColor: '#dee2e6',
-    opacity: scrollY.interpolate({
-      inputRange: [0, 100, 200, 300, 400],
-      outputRange: [0, 0.625, 0.75, 0.875, 1],
-      extrapolate: 'clamp',
-    }),
-    zIndex: 0,
-    // ...Platform.select({
-    //   ios: {
-    //     height: 80,
-    //   },
-    //   android: {
-    //     height: 43,
-    //   },
-    // }),
-    height: 40,
-  }),
+
   headerContents: {
     position: 'absolute',
     bottom: 5,
@@ -98,27 +51,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  btnGoBack: {
-    position: 'absolute',
-    ...Platform.select({
-      ios: {
-        top: 40,
-      },
-      android: {
-        top: 0,
-      },
-    }),
-    left: 5,
-    zIndex: 9,
-    top: 10,
-  },
-  iconGoBack: {
-    fontSize: 40,
-  },
-  txtTitle: {
-    fontSize: 16,
-    fontWeight: '700',
   },
   contentsContainer: {
     borderTopRightRadius: 25,
@@ -153,14 +85,14 @@ const styles = StyleSheet.create({
   },
   txtTeacher: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: '#343a40',
     marginLeft: 15,
   },
   txtTeacherName: {
     marginLeft: 10,
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: 'bold',
     color: '#343a40',
   },
   teacherContentContainer: {

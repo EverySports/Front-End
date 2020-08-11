@@ -42,7 +42,11 @@ const EveryStackNavigator = () => {
       <Stack.Screen
         name="TeacherInfo"
         component={TeacherInfoContainer}
-        options={{headerShown: false}}
+        options={({route}) => ({
+          title: '',
+          headerTransparent: true,
+          // headerTintColor: '#495057',
+        })}
       />
       <Stack.Screen
         name="Payment"
@@ -58,7 +62,6 @@ const EveryStackNavigator = () => {
         component={PaymemtDetailContainer}
         options={({route}) => ({
           title: '수강신청 확인',
-
           headerTintColor: '#495057',
         })}
       />

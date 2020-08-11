@@ -9,6 +9,9 @@ import {Provider} from 'react-redux';
 import configureStore from './src/modules';
 
 YellowBox.ignoreWarnings(['Require cycle:']);
+YellowBox.ignoreWarnings([
+  'Non-serializable values were found in the navigation state',
+]);
 const store = configureStore;
 const EverySportsApp = () => (
   <Provider store={store}>

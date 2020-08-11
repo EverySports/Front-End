@@ -1,7 +1,12 @@
-import React from 'react';
-import {StyleSheet, View, Text, Dimensions} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import Calendar from '../../../../components/Calendar';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const scheduleParser = (input) => {
   const ans = [];
@@ -28,32 +33,54 @@ const PaymentPresenter = ({navigation, schedule, classInfo}) => {
   const {userSchedule, teacherSchedule} = schedule;
   const [_userSchedule, _teacherSchedule] = [
     scheduleParser(userSchedule),
-    scheduleParser(teacherSchedule),
+    scheduleParser(teacherSchedule).map((row) => row.map((value) => value * 2)),
   ];
+  const [temp, setTemp] = useState(_teacherSchedule);
+  const [user, setUser] = useState(_userSchedule);
+
+  const onPress_navigate = () => {
+    navigation.navigate('PaymentDetail', {
+      userSchedule: user,
+      userAndTeacherSchedule: temp,
+      info: classInfo,
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.table}>
-        <View style={styles.thead}>
-          {day.map((val, idx) => (
-            <View key={idx} style={styles.day}>
-              <Text>{val}</Text>
-            </View>
-          ))}
+      <View style={{position: 'absolute', bottom: 10}}>
+        <View style={styles.nextButtonWrap}>
+          <TouchableOpacity onPress={onPress_navigate}>
+            <Text style={styles.txtNext}>시간 선택 완료</Text>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <View style={styles.timeContaioner}>
-            {time.map((val, key) => (
-              <View key={key} style={styles.time}>
+        <View style={styles.table}>
+          <View style={styles.thead}>
+            {day.map((val, key) => (
+              <View key={key} style={styles.day}>
                 <Text>{val}</Text>
               </View>
             ))}
           </View>
-          <Calendar
-            navigation={navigation}
-            userSchedule={_userSchedule}
-            teacherSchedule={_teacherSchedule}
-            classInfo={classInfo}
-          />
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.timeContaioner}>
+              {time.map((val, key) => (
+                <View key={key} style={styles.time}>
+                  <Text>{val}</Text>
+                </View>
+              ))}
+            </View>
+            <Calendar
+              navigation={navigation}
+              userSchedule={_userSchedule}
+              teacherSchedule={_teacherSchedule}
+              classInfo={classInfo}
+              user={user}
+              setUser={setUser}
+              temp={temp}
+              setTemp={setTemp}
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -66,8 +93,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
-    paddingTop: 100,
   },
+
+  nextButtonWrap: {
+    alignItems: 'flex-end',
+    marginRight: 10,
+    marginBottom: 10,
+  },
+  txtNext: {
+    color: '#4263eb',
+    fontWeight: 'bold',
+  },
+
   table: {
     borderWidth: 1,
     width: tWidth + 1,

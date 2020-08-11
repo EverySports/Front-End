@@ -29,7 +29,7 @@ const TeacherInfo_ReviewItem = ({info}) => {
             justifyContent: 'space-around',
           }}>
           <Text style={styles.txtreviewInfo}>
-            {Moment(info.review_CreatedAt).format('Y년M월D일')}
+            {Moment(info.review_CreatedAt).format('Y년 M월 D일')}
           </Text>
         </View>
       </View>
