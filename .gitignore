@@ -61,5 +61,7 @@ buck-out/
 # scr Dir
 /src/assets/img/
 /src/api/
+
+# google android services file
 /android/app/*.json
 
