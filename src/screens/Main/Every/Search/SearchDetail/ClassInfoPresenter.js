@@ -67,8 +67,6 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
       y: scrollPosition[idx],
       animatied: true,
     });
-
-    console.log(scrollPosition[idx]);
   };
 
   const onLayout = (name) => (e) => {

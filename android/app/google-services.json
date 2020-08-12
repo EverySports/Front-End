@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "393763741776",
+    "firebase_url": "https://everysports-b9b41.firebaseio.com",
+    "project_id": "everysports-b9b41",
+    "storage_bucket": "everysports-b9b41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393763741776:android:35b0226ddfce04d2b63155",
+        "android_client_info": {
+          "package_name": "com.everysports.everysports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393763741776-bfp2q9ov0p6ko664t2cteq9enfmnmlgo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.everysports.everysports",
+            "certificate_hash": "fe114a6ad759f69ff5994eb4a3b5cdf574c421e3"
+          }
+        },
+        {
+          "client_id": "393763741776-oltarqhe70aodifimjplr27ebgg4o6a2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJcCM856hs5e2RSqxXU_2fMy2MBbPtczc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393763741776-oltarqhe70aodifimjplr27ebgg4o6a2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "393763741776-nc58890jv4166h02sedq3jf0e1g1q4hv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.everysports.everysports"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
