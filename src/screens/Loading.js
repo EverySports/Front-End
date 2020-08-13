@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 const Loading = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('login');
+      // navigation.navigate('login');
     }, 0);
   }, []);
 
