@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, Image, Animated} from 'react-native';
-import Login from './Login/Login';
+// import Login from './Login/Login';
 import EverySportsLogo from '../assets/img/EverySports.png';
 
 const Loading = ({navigation}) => {
@@ -11,7 +11,7 @@ const Loading = ({navigation}) => {
 
   useEffect(() => {
     setTimeout(() => {
-      // navigation.navigate('login');
+      navigation.navigate('login');
     }, 0);
   }, []);
 
@@ -20,7 +20,8 @@ const Loading = ({navigation}) => {
       <View style={styles.animated}>
         <Image source={EverySportsLogo} style={styles.imgLogo} />
       </View>
-      {state.animatedDone && <Login />}
+      <Text>asdads</Text>
+      {/* {state.animatedDone && <Login />} */}
     </View>
   );
 };

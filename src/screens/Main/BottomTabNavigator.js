@@ -62,3 +62,17 @@ const BottomTabNavigator = () => {
 };
 
 export default BottomTabNavigator;
+
+// import React from 'react';
+// import {View, Text} from 'react-native';
+// import Entypo from 'react-native-vector-icons/Entypo';
+// const BottomTabNavigator = () => {
+//   return (
+//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Text>asdasd</Text>
+//       <Text>asdfasdf</Text>
+//     </View>
+//   );
+// };
+
+// export default BottomTabNavigator;
