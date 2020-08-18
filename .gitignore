@@ -62,6 +62,9 @@ buck-out/
 /src/assets/img/
 /src/api/
 
+#Login Dir
+/src/Login/
+
 # google android services file
 /android/app/*.json
 
