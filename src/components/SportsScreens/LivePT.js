@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 45,
     borderRadius: 4,
-    width: width - 40,
+    width: width / 2 + 50,
     marginBottom: 20,
   },
   txtGoToLive: {

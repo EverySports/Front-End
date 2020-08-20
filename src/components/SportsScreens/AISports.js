@@ -18,7 +18,6 @@ const AISports = () => {
         <Entypo style={styles.icon} name="grid" />
         <Text style={styles.txtContainerHeader}>AI 트레이닝 시작하기</Text>
       </View>
-
       <TouchableOpacity>
         <LinearGradient
           colors={colors}

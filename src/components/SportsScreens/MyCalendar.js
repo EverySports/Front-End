@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   calendar: {
     borderRadius: 5,
     width: 300,
-    height: height / 7,
+    height: height / 6,
     marginRight: 10,
     padding: 10,
     backgroundColor: '#fff',
