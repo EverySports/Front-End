@@ -6,6 +6,7 @@ import category from './category';
 import teacherInfo from './teacherInfo';
 import schedule from './schedule';
 import user from './user';
+import sportsSchedule from './sportsSchedule';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 //  set rootReducer
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   teacherInfo,
   schedule,
   user,
+  sportsSchedule,
 });
 // set redux Middleware && redux thunk for REST API
 const configureStore = createStore(
