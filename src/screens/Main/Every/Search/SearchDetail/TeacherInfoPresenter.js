@@ -1,25 +1,16 @@
-import React, {useRef, useEffect} from 'react';
-import {StyleSheet, View, Dimensions, Image, Animated} from 'react-native';
+import React from 'react';
+import {StyleSheet, View, Dimensions, Image} from 'react-native';
 import TeacherInfo_About from '../../../../../components/TeacherInfo_About';
 import TeacherInfo_ClassList from '../../../../../components/TeacherInfo_ClassList';
 import TeacherInfo_ReviewList from '../../../../../components/TeacherInfo_ReviewList';
 
 const {width, height} = Dimensions.get('window');
 
-const TeacherInfoPresenter = ({navigation, route, info}) => {
-  const scrollY = useRef(new Animated.Value(0)).current;
-
+const TeacherInfoPresenter = ({navigation, info}) => {
   return (
     <>
       <Image style={styles.imageBackground} source={info.teacher_Image} />
-      <Animated.ScrollView
-        showsVerticalScrollIndicator={false}
-        // onScroll={Animated.event(
-        //   [{nativeEvent: {contentOffset: {y: scrollY}}}],
-        //   {useNativeDriver: true},
-        // )}
-        // scrollEventThrottle={16}
-      >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.contentsContainer}>
           <View style={styles.topTabBar}></View>
           <View>
@@ -31,7 +22,7 @@ const TeacherInfoPresenter = ({navigation, route, info}) => {
             <TeacherInfo_ReviewList info={info.review_list} />
           </View>
         </View>
-      </Animated.ScrollView>
+      </ScrollView>
     </>
   );
 };
@@ -42,15 +33,6 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
     flex: 1,
-  },
-
-  headerContents: {
-    position: 'absolute',
-    bottom: 5,
-    width: width,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   contentsContainer: {
     borderTopRightRadius: 25,

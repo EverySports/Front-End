@@ -8,6 +8,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import EveryStackNavigator from './Every/EveryStackNavigator';
+import SportsStackNavigator from './Sports/SportsStackNavigator';
 
 const ICON_SIZE = 16;
 const ICON_COLOR = '#495057';
@@ -51,8 +52,8 @@ const BottomTabNavigator = () => {
             return IconsComponents[iconsName.indexOf(route.name)];
           },
         })}>
+        <Tab.Screen name="운동" component={SportsStackNavigator} />
         <Tab.Screen name="에브리" component={EveryStackNavigator} />
-        <Tab.Screen name="운동" component={TempScreen} />
         <Tab.Screen name="데이터" component={TempScreen} />
         <Tab.Screen name="채팅" component={TempScreen} />
         <Tab.Screen name="설정" component={TempScreen} />

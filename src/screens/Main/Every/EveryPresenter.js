@@ -31,7 +31,6 @@ const EveryPresenter = ({classes, navigation}) => {
           </Animated.Text>
         </LinearGradient>
       </Animated.View>
-
       <View style={styles.contentsWrap}>
         <View style={styles.contents}>
           <View style={styles.categoryWrap}>
@@ -64,12 +63,6 @@ const styles = StyleSheet.create({
     transform: [
       {
         translateY: scrollA,
-      },
-      {
-        scale: scrollA.interpolate({
-          inputRange: [-HEADER_HEIGHT, 0, HEADER_HEIGHT / 2, HEADER_HEIGHT],
-          outputRange: [1, 1, 1, 1],
-        }),
       },
     ],
   }),

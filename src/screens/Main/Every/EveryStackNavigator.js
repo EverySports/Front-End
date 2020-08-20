@@ -1,6 +1,5 @@
 import React from 'react';
-import {Platform, View} from 'react-native';
-import {createStackNavigator, HeaderBackground} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import EveryContainer from './EveryContainer';
 import Search from './Search/Search';
 import ClassInfoContainer from './Search/SearchDetail/ClassInfoContainer';
@@ -8,18 +7,6 @@ import TeacherInfoContainer from './Search/SearchDetail/TeacherInfoContainer';
 import PaymentContainer from './Payment/PaymentContainer';
 import PaymemtDetailContainer from './Payment/PaymemtDetailContainer';
 const Stack = createStackNavigator();
-
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 1000,
-    damping: 500,
-    mass: 3,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
 
 const EveryStackNavigator = () => {
   return (
