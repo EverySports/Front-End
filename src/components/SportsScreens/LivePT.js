@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 4,
     width: width / 2 + 50,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   txtGoToLive: {
     color: '#fff',
@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    marginBottom: 10,
   },
   icon2: {
     color: '#20c997',

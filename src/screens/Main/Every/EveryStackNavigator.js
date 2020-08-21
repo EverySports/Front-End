@@ -32,7 +32,7 @@ const EveryStackNavigator = () => {
         options={({route}) => ({
           title: '',
           headerTransparent: true,
-          // headerTintColor: '#495057',
+          headerTintColor: '#495057',
         })}
       />
       <Stack.Screen

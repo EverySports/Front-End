@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Dimensions, Image} from 'react-native';
+import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
 import TeacherInfo_About from '../../../../../components/TeacherInfo_About';
 import TeacherInfo_ClassList from '../../../../../components/TeacherInfo_ClassList';
 import TeacherInfo_ReviewList from '../../../../../components/TeacherInfo_ReviewList';

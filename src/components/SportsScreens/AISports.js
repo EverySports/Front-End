@@ -11,14 +11,19 @@ import LinearGradient from 'react-native-linear-gradient';
 const {width, height} = Dimensions.get('window');
 const colors = ['#007991', '#78ffd6'];
 
-const AISports = () => {
+const AISports = ({navigation}) => {
+  const onPress = () => {
+    navigation.navigate('AISports', {
+      title: 'AI 트레이닝',
+    });
+  };
   return (
     <View style={styles.container}>
       <View style={styles.title}>
         <Entypo style={styles.icon} name="grid" />
         <Text style={styles.txtContainerHeader}>AI 트레이닝 시작하기</Text>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <LinearGradient
           colors={colors}
           style={styles.btnMore}
@@ -45,6 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: width,
     paddingLeft: 20,
+    marginBottom: 10,
   },
   icon: {
     color: '#2F80ED',
@@ -54,9 +60,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#2F80ED',
-    marginBottom: 10,
+
     marginLeft: 5,
-    marginTop: 10,
   },
   btnMore: {
     width: width - 40,
