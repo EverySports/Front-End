@@ -44,35 +44,34 @@ const AITrainingContents = ({navigation}) => {
           ];
           const opacity = scrollX.interpolate({
             inputRange,
-            outputRange: [0.3, 1, 0.3],
+            outputRange: [0.1, 1, 0.1],
           });
           const translateY = scrollX.interpolate({
             inputRange,
-            outputRange: [100, -50, 100],
+            // outputRange: [30, -20, 30],
+            outputRange: [0, 0, 0],
           });
           return (
             <>
               {index === 0 && <View style={styles.emptyspace} />}
-              <View style={styles.contentsContainer}>
-                <Animated.View style={styles.contents(translateY, opacity)}>
-                  <Text style={styles.txtName}>{item.name}</Text>
-                  <Image source={item.img} style={styles.imgSports} />
-                  <View style={styles.contentsInfo}>
-                    <TouchableOpacity>
-                      <LinearGradient
-                        style={styles.btnStart}
-                        colors={colors}
-                        start={{x: 0, y: 0.5}}
-                        end={{x: 1, y: 0.5}}>
-                        <AntDesign name="play" style={styles.icon} />
-                        <Text style={styles.txtStart}>
-                          {item.name} 시작하기
-                        </Text>
-                      </LinearGradient>
-                    </TouchableOpacity>
-                  </View>
-                </Animated.View>
-              </View>
+              {/*  */}
+              {/*  */}
+              {/*  */}
+              <Animated.View style={styles.contents(translateY, opacity)}>
+                <Image source={item.img} style={styles.imgSports} />
+                <View
+                  style={{
+                    position: 'absolute',
+                    width: ITEM_WIDTH,
+                    backgroundColor: 'red',
+                    bottom: height - ITEM_HEIGHT,
+                    height: 10,
+                    borderWidth: 1,
+                  }}></View>
+              </Animated.View>
+              {/*  */}
+              {/*  */}
+              {/*  */}
               {index === sports.length - 1 && (
                 <View style={styles.emptyspace} />
               )}
@@ -88,38 +87,39 @@ const styles = StyleSheet.create({
   emptyspace: {
     width: SPACER_ITEM_WIDTH,
   },
-
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: '#fff',
   },
-
   contentsContainer: {
     width: ITEM_WIDTH,
     backgroundColor: '#fff',
   },
   contents: (translateY, opacity) => ({
     width: ITEM_WIDTH,
-    justifyContent: 'center',
-    alignItems: 'center',
     marginHorizontal: SPACING,
     padding: SPACING * 2,
-    paddingTop: 5,
-    backgroundColor: '#fff',
+    // backgroundColor: 'red',
     borderRadius: 0,
     transform: [{translateY}],
     opacity: opacity,
     marginTop: 0,
+    // borderWidth: 1,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
   }),
 
   imgSports: {
-    width: ITEM_WIDTH * 0.95,
-    height: ITEM_HEIGHT * 0.85,
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT - 0,
     marginRight: SPACING,
-    borderRadius: 10,
-    opacity: 0.9,
+    opacity: 0.95,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 80,
   },
   contentsInfo: {
     marginTop: 10,

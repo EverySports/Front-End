@@ -14,6 +14,7 @@ const EveryPresenter = ({classes, navigation}) => {
   return (
     <Animated.ScrollView
       style={styles.container}
+      showsVerticalScrollIndicator={false}
       onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollA}}}], {
         useNativeDriver: true,
       })}

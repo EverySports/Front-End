@@ -9,7 +9,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import EveryStackNavigator from './Every/EveryStackNavigator';
 import SportsStackNavigator from './Sports/SportsStackNavigator';
-
+import ChatStackNavigator from './Chat/ChatStackNavigator';
 const ICON_SIZE = 16;
 const ICON_COLOR = '#495057';
 
