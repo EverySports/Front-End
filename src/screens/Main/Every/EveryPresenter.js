@@ -32,15 +32,15 @@ const EveryPresenter = ({classes, navigation}) => {
           </Animated.Text>
         </LinearGradient>
       </Animated.View>
-      <View style={styles.contentsWrap}>
+      <View style={styles.contentsContainer}>
         <View style={styles.contents}>
-          <View style={styles.categoryWrap}>
+          <View style={styles.categoryContainer}>
             <Text style={styles.contentsHeader}>카테고리별 찾기</Text>
-            <View style={styles.categoryContainer}>
+            <View style={styles.categoryGroup}>
               <Category name="요가" navigation={navigation} />
               <Category name="필라테스" navigation={navigation} />
             </View>
-            <View style={styles.categoryContainer}>
+            <View style={styles.categoryGroup}>
               <Category name="헬스" navigation={navigation} />
               <Category name="다이어트" navigation={navigation} />
             </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     }),
   }),
 
-  contentsWrap: {
+  contentsContainer: {
     borderWidth: 1,
     borderColor: '#FFFFFF',
     borderTopRightRadius: 40,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   contents: {
     justifyContent: 'center',
   },
-  categoryWrap: {
+  categoryContainer: {
     backgroundColor: 'white',
     paddingTop: 10,
     paddingBottom: 10,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     marginBottom: 10,
   },
-  categoryContainer: {
+  categoryGroup: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingTop: 10,
