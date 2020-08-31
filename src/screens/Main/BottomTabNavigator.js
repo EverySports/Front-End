@@ -55,7 +55,7 @@ const BottomTabNavigator = () => {
         <Tab.Screen name="에브리" component={EveryStackNavigator} />
         <Tab.Screen name="운동" component={SportsStackNavigator} />
         <Tab.Screen name="데이터" component={TempScreen} />
-        <Tab.Screen name="채팅" component={TempScreen} />
+        <Tab.Screen name="채팅" component={ChatStackNavigator} />
         <Tab.Screen name="설정" component={TempScreen} />
       </Tab.Navigator>
     </NavigationContainer>

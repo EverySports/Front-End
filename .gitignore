@@ -58,13 +58,13 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
-# scr Dir
-/src/assets/img/
-/src/api/
+# # scr Dir
+# /src/assets/img/
+# /src/api/
 
-#Login Dir
-/src/Login/
+# #Login Dir
+# /src/Login/
 
-# google android services file
-/android/app/*.json
+# # google android services file
+# /android/app/*.json
 

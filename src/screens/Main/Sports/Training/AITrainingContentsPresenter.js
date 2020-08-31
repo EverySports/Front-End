@@ -48,30 +48,22 @@ const AITrainingContents = ({navigation}) => {
           });
           const translateY = scrollX.interpolate({
             inputRange,
-            // outputRange: [30, -20, 30],
-            outputRange: [0, 0, 0],
+            outputRange: [30, -30, 30],
+            // outputRange: [0, 0, 0],
           });
           return (
             <>
               {index === 0 && <View style={styles.emptyspace} />}
-              {/*  */}
-              {/*  */}
-              {/*  */}
               <Animated.View style={styles.contents(translateY, opacity)}>
                 <Image source={item.img} style={styles.imgSports} />
                 <View
                   style={{
-                    position: 'absolute',
-                    width: ITEM_WIDTH,
-                    backgroundColor: 'red',
-                    bottom: height - ITEM_HEIGHT,
-                    height: 10,
                     borderWidth: 1,
-                  }}></View>
+                    padding: 10,
+                  }}>
+                  <Text>트레이닝 인포</Text>
+                </View>
               </Animated.View>
-              {/*  */}
-              {/*  */}
-              {/*  */}
               {index === sports.length - 1 && (
                 <View style={styles.emptyspace} />
               )}
@@ -89,24 +81,24 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: '#fff',
   },
   contentsContainer: {
     width: ITEM_WIDTH,
     backgroundColor: '#fff',
   },
   contents: (translateY, opacity) => ({
+    paddingTop: 30,
     width: ITEM_WIDTH,
     marginHorizontal: SPACING,
     padding: SPACING * 2,
-    // backgroundColor: 'red',
     borderRadius: 0,
     transform: [{translateY}],
     opacity: opacity,
     marginTop: 0,
-    // borderWidth: 1,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
@@ -114,12 +106,13 @@ const styles = StyleSheet.create({
 
   imgSports: {
     width: ITEM_WIDTH,
-    height: ITEM_HEIGHT - 0,
+    height: ITEM_HEIGHT,
     marginRight: SPACING,
     opacity: 0.95,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    borderBottomRightRadius: 80,
+    borderBottomRightRadius: 50,
+    borderBottomLeftRadius: 10,
   },
   contentsInfo: {
     marginTop: 10,
@@ -136,24 +129,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
-  },
-  txtName: {
-    marginTop: 80,
-    marginBottom: 10,
-    fontSize: 25,
-    color: '#12b886',
-    fontWeight: 'bold',
-  },
-  icon: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 30,
-    marginRight: 10,
-  },
-  txtStart: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 20,
   },
 });
 

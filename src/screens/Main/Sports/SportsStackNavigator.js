@@ -16,7 +16,10 @@ const SportsStackNavigator = () => {
       <Stack.Screen
         name="AISports"
         component={AITrainingContentsContainer}
-        options={({route}) => ({title: route.params.title})}
+        options={({route}) => ({
+          title: route.params.title,
+          headerTintColor: '#495057',
+        })}
       />
     </Stack.Navigator>
   );

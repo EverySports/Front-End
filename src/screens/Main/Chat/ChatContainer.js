@@ -1,10 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import ChatPresenter from './ChatPresenter';
-const ChatContainer = () => {
-  return <ChatPresenter />;
+const ChatContainer = ({navigation}) => {
+  return <ChatPresenter navigation={navigation} />;
 };
-
-const styles = StyleSheet.create({});
 
 export default ChatContainer;
