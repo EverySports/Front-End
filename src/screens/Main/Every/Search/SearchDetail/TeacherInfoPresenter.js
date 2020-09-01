@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   contentsContainer: {
     borderTopRightRadius: 25,
     borderTopLeftRadius: 25,
-    // marginTop: (height * 2) / 4,
     marginTop: height / 1.5,
     width: width,
     paddingTop: 15,
