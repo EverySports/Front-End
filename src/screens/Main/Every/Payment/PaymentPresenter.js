@@ -127,14 +127,12 @@ const styles = StyleSheet.create({
     width: TABLE_ELEMENTS_WIDTH,
     height: TABLE_HEADE_HEIGHT - 1,
     borderColor: TABLE_BORDER_COLOR,
-    // borderLeftWidth: 1,
   },
   timeContaioner: {
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: TABLE_BORDER_COLOR,
     width: 20,
-    // transform: [{translateY: -1}],
   },
   time: {
     alignItems: 'center',

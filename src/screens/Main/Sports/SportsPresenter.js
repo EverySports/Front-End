@@ -5,8 +5,6 @@ import {
   Dimensions,
   ScrollView,
   SafeAreaView,
-  Text,
-  TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import LivePT from '../../../components/SportsScreens/LivePT';
