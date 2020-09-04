@@ -42,8 +42,6 @@ const ClassInfo_Curriculum = ({info}) => {
           }}>
           <Text>Curriculum Image 3</Text>
         </View>
-
-        {/* <Text> {info.class_Curriculum}</Text> */}
       </View>
     </View>
   );
