@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
-import {Text, View, TextInput} from 'react-native';
+import React from 'react';
+import {Text, View} from 'react-native';
 import ChatRoomPresenter from './ChatRoomPresenter';
-const componentName = ({route, naivigation}) => {
-  const name = route.params?.name ?? null;
 
-  return <ChatRoomPresenter name={name} naivigation={naivigation} />;
+const ChatRoomContainer = () => {
+  return <ChatRoomPresenter />;
 };
-
-export default componentName;
+export default ChatRoomContainer;

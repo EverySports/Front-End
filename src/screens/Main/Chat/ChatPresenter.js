@@ -1,45 +1,45 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
   Text,
-  Image,
   SafeAreaView,
-  TouchableOpacity,
-  TextInput,
+  ScrollView,
+  Dimensions,
 } from 'react-native';
-import ChatIcon from '../../../assets/img/chat.png';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-const CIRCLE_SIZE = 600;
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import ChatListItem from '../../../components/ChatScreens/ChatListItem';
+const {width} = Dimensions.get('window');
 
-const ChatPresenter = ({navigation}) => {
-  const [state, setState] = useState('');
-
-  const onPress = () => {
-    navigation.navigate('ChatRoom', {
-      name: state.name,
-    });
-  };
-
+const ChatPresenter = ({navigation, ...props}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.circle} />
-      <View style={styles.contents}>
-        <Image source={ChatIcon} style={styles.img} />
-        <Text style={styles.txtHeader}>Username</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="DesignIntoCode"
-          onChange={(name) => setState(name)}
-          value={state.name}
-        />
-        <View style={{alignItems: 'flex-end', marginTop: 64}}>
-          <TouchableOpacity style={styles.continue} onPress={onPress}>
-            <AntDesign name="arrowright" size={32} style={{color: '#fff'}} />
-          </TouchableOpacity>
-        </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Ionicons style={styles.icon} name="chatbubble-outline" size={25} />
+        <Text style={styles.txtHeader}>Every 채팅</Text>
       </View>
-    </View>
+      {/* contents */}
+      <View>
+        <View style={styles.contentsTitle}>
+          <Text style={styles.txtMyClassTitle}>담당 PT 트레이너 채팅방</Text>
+          <Text style={styles.txtMatching}>담당 트레이너 : 2명</Text>
+        </View>
+        <ScrollView style={styles.myClassList}>
+          <ChatListItem navigation={navigation} />
+          <ChatListItem navigation={navigation} />
+        </ScrollView>
+      </View>
+
+      {/* footer */}
+      <View style={styles.footer}>
+        <Text style={styles.txtFooter}>
+          상대방과의 원활한 채팅활동을 위해 EverySports는
+        </Text>
+        <Text style={styles.txtFooter}>
+          채팅내용을 저장하여 관리하고 있습니다.
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -47,54 +47,62 @@ export default ChatPresenter;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#F4F5F7',
-  },
-  circle: {
-    width: CIRCLE_SIZE,
-    height: CIRCLE_SIZE,
-    borderRadius: CIRCLE_SIZE / 2,
     backgroundColor: '#fff',
-    position: 'absolute',
-    left: -150,
-    top: -50,
+    flex: 1,
   },
-  img: {
-    width: 200,
-    height: 200,
-    borderRadius: 150,
-    alignSelf: 'center',
-    marginTop: 64,
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    marginBottom: 10,
   },
-  contents: {
-    marginTop: 32,
-    marginHorizontal: 32,
-    height: 100,
+  icon: {
+    color: '#343a40',
+  },
+  iconDelete: {
+    color: '#fff',
   },
   txtHeader: {
+    color: '#343a40',
     fontWeight: 'bold',
-    fontSize: 30,
-    color: '#514E5A',
-    marginTop: 32,
+    fontSize: 20,
+    marginHorizontal: 10,
   },
-  input: {
-    marginTop: 32,
-    height: 50,
-    borderWidth: 2,
-    width: 250,
-    paddingHorizontal: 16,
-    paddingVertical: 5,
-    borderRadius: 30,
-    borderColor: '#339af0',
-    marginHorizontal: 62,
-    fontWeight: 'bold',
-  },
-  continue: {
-    width: 70,
-    height: 70,
-    borderRadius: 70 / 2,
-    backgroundColor: '#339af0',
+  contentsTitle: {
+    marginVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  txtMyClassTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    paddingLeft: 20,
+    color: '#495057',
+  },
+  txtMatching: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    paddingRight: 10,
+    color: '#495057',
+  },
+  myClassList: {
+    paddingBottom: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: '#dee2e6',
+  },
+
+  footer: {
+    width: width,
+    position: 'absolute',
+    bottom: 0,
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#e9ecef',
+    paddingVertical: 10,
+  },
+  txtFooter: {
+    fontSize: 11,
+    color: '#868e96',
   },
 });
