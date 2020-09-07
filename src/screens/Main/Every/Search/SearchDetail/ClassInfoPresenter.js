@@ -70,7 +70,7 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
   };
 
   const onLayout = (name) => (e) => {
-    console.log(name);
+    //get components height
     const {height} = e.nativeEvent.layout;
     const temp = {
       ...componentsHeight,
@@ -80,9 +80,7 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
   };
 
   return (
-    <ScrollView
-      style={styles.scrollContainer}
-      ref={(scroller) => setScrollY(scroller)}>
+    <ScrollView style={styles.scrollContainer}>
       <View style={{zIndex: 1}}>
         <Image source={class_Info.class_Image} style={styles.imgProfile} />
       </View>
