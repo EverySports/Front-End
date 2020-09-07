@@ -10,6 +10,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import EveryStackNavigator from './Every/EveryStackNavigator';
 import SportsStackNavigator from './Sports/SportsStackNavigator';
 import ChatStackNavigator from './Chat/ChatStackNavigator';
+import DataStackNavigator from './Data/DataStackNavigator';
+import ChatContainer from './Chat/ChatContainer';
 const ICON_SIZE = 16;
 const ICON_COLOR = '#495057';
 
@@ -54,8 +56,8 @@ const BottomTabNavigator = () => {
         })}>
         <Tab.Screen name="에브리" component={EveryStackNavigator} />
         <Tab.Screen name="운동" component={SportsStackNavigator} />
-        <Tab.Screen name="데이터" component={TempScreen} />
-        <Tab.Screen name="채팅" component={TempScreen} />
+        <Tab.Screen name="데이터" component={DataStackNavigator} />
+        <Tab.Screen name="채팅" component={ChatContainer} />
         <Tab.Screen name="설정" component={TempScreen} />
       </Tab.Navigator>
     </NavigationContainer>
