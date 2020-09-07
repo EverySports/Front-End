@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {StyleSheet, View, Text, ScrollView, Dimensions} from 'react-native';
 import Moment from 'moment';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
+import * as util from './CalendarUtil';
 const {width, height} = Dimensions.get('window');
 const day = ['월', '화', '수', '목', '금', '토', '일'];
 
 const MyCalendar = ({schedule}) => {
-  const date = Moment(new Date()).format('M월 D일');
-
+  const scrollX = useRef();
+  useEffect(() => {
+    scrollX.current.scrollTo({
+      x: 620,
+    });
+  }, []);
   return (
     <View>
       <View style={styles.title}>
@@ -16,16 +20,23 @@ const MyCalendar = ({schedule}) => {
         <Text style={styles.txtContainerHeader}>나의 운동 일정</Text>
       </View>
       <ScrollView
+        ref={scrollX}
         showsHorizontalScrollIndicator={false}
         horizontal={true}
         style={styles.calendarContainer}>
-        {day.map((day, key) => (
-          <View key={key} style={styles.calendar}>
+        {util.week.map((date, key) => (
+          <ScrollView key={key} style={styles.calendar}>
             <View style={styles.calendarTitle}>
-              <Text style={styles.txtDate}>{day}</Text>
-              <Text style={styles.txtDate}>{date}</Text>
+              <Text style={styles.txtDate}>{date.day}요일</Text>
+              <Text style={styles.txtDate}>{date.mmdd}</Text>
             </View>
-          </View>
+            <View style={styles.contents}>
+              <View style={styles.schedule}>
+                <Text style={styles.txtTime}>14:00</Text>
+                <Text style={styles.txtClassName}>신청한 클래스 이름</Text>
+              </View>
+            </View>
+          </ScrollView>
         ))}
       </ScrollView>
     </View>
@@ -82,6 +93,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 14,
     color: '#2F80ED',
+  },
+
+  contents: {
+    paddingTop: 10,
+  },
+  schedule: {
+    flexDirection: 'row',
+    marginVertical: 5,
+  },
+  txtTime: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: '#2F80ED',
+    marginRight: 20,
+  },
+  txtClassName: {
+    fontWeight: 'bold',
+    fontSize: 14,
+    color: '#495057',
   },
 });
 
