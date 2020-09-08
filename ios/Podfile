@@ -8,6 +8,8 @@ target 'everysports' do
   
   use_react_native!(:path => config["reactNativePath"])
 
+
+
   target 'everysportsTests' do
     inherit! :complete
     # Pods for testing

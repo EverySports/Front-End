@@ -24,7 +24,16 @@ const ChatPresenter = ({navigation, ...props}) => {
           <Text style={styles.txtMyClassTitle}>담당 PT 트레이너 채팅방</Text>
           <Text style={styles.txtMatching}>담당 트레이너 : 2명</Text>
         </View>
-        <ScrollView style={styles.myClassList}>
+        <ScrollView style={styles.chatList}>
+          <ChatListItem navigation={navigation} />
+          <ChatListItem navigation={navigation} />
+        </ScrollView>
+      </View>
+      <View>
+        <View style={styles.contentsTitle}>
+          <Text style={styles.txtMyClassTitle}>상담/문의 채팅방</Text>
+        </View>
+        <ScrollView style={styles.chatList}>
           <ChatListItem navigation={navigation} />
           <ChatListItem navigation={navigation} />
         </ScrollView>
@@ -86,12 +95,11 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     color: '#495057',
   },
-  myClassList: {
+  chatList: {
     paddingBottom: 10,
     borderBottomWidth: 2,
     borderBottomColor: '#dee2e6',
   },
-
   footer: {
     width: width,
     position: 'absolute',
