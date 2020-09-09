@@ -5,10 +5,9 @@ platform :ios, '10.0'
 
 target 'everysports' do
   config = use_native_modules!
-  
+  pod 'GoogleSignIn', '~> 5.0.2'
+  pod 'Firebase/Analytics'
   use_react_native!(:path => config["reactNativePath"])
-
-
 
   target 'everysportsTests' do
     inherit! :complete
