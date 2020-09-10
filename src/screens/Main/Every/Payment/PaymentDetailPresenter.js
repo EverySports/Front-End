@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 //#region  import lib
 import Calendar from '../../../../assets/img/calendar.png';
-import SimpleCalendar from '../../../../components/SimpleCalendar';
+import SimpleCalendar from '../../../../components/EveryScreens/SimpleCalendar';
 import EverySports from '../../../../assets/img/EverySports.png';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';

@@ -1,33 +1,34 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View, Text, Animated, Platform} from 'react-native';
-import Category from '../../../components/Category';
-import Slide from '../../../components/Slide';
+import {StyleSheet, View, Text, Animated} from 'react-native';
+import Category from '../../../components/EveryScreens/Category';
+import Slide from '../../../components/EveryScreens/Slide';
 import LinearGradient from 'react-native-linear-gradient';
 
 const HEADER_HEIGHT = 200;
 
 const EveryPresenter = ({classes, navigation}) => {
-  const scrollA = useRef(new Animated.Value(0)).current;
+  const scrollY = useRef(new Animated.Value(0)).current;
   const {hotClasses, newClasses} = classes;
-  const colors = ['#ffa8a8', '#ffffff'];
+  const colors = ['#005AA7', '#FFFDE4', '#fff'];
 
   return (
     <Animated.ScrollView
+      ref={scrollY}
       style={styles.container}
       showsVerticalScrollIndicator={false}
-      onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollA}}}], {
+      onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], {
         useNativeDriver: true,
       })}
       scrollEventThrottle={16}>
-      <Animated.View style={styles.header(scrollA)}>
+      <Animated.View style={styles.header(scrollY)}>
         <LinearGradient
           colors={colors}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 3}}
           style={{
             height: HEADER_HEIGHT,
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10,
           }}>
-          <Animated.Text style={styles.headerText(scrollA)}>
+          <Animated.Text style={styles.headerText(scrollY)}>
             <Text>나만의 트레이너 찾기</Text>
           </Animated.Text>
         </LinearGradient>
@@ -57,17 +58,16 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
   },
-  header: (scrollA) => ({
+  header: (scrollY) => ({
     height: HEADER_HEIGHT,
-    backgroundColor: 'white',
     justifyContent: 'center',
     transform: [
       {
-        translateY: scrollA,
+        translateY: scrollY,
       },
     ],
   }),
-  headerText: (scrollA) => ({
+  headerText: (scrollY) => ({
     position: 'absolute',
     bottom: 60,
     marginTop: 0,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#495057',
     fontWeight: 'bold',
-    opacity: scrollA.interpolate({
+    opacity: scrollY.interpolate({
       inputRange: [0, HEADER_HEIGHT / 4, HEADER_HEIGHT / 2],
       outputRange: [1, 0.05, 0],
       extrapolate: 'clamp',

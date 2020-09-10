@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import Calendar from '../../../../components/Calendar';
+import Calendar from '../../../../components/EveryScreens/Calendar';
 
 const scheduleParser = (input) => {
   const ans = [];

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,18 +9,19 @@ import {
   TouchableOpacity,
 } from 'react-native';
 //#region import Class Information Component
-import ClassInfo_TrainerInfo from '../../../../../components/ClassInfo_TrainerInfo';
-import ClassInfo_Curriculum from '../../../../../components/ClassInfo_Curriculum';
-import ClassInfo_Review from '../../../../../components/ClassInfo_Review';
-import ClassInfo_Consulting from '../../../../../components/ClassInfo_Consulting';
-import ClassInfo_RefundPolicy from '../../../../../components/ClassInfo_RefundPolicy';
+import ClassInfo_TrainerInfo from '../../../../../components/EveryScreens/ClassInfo_TrainerInfo';
+import ClassInfo_Curriculum from '../../../../../components/EveryScreens/ClassInfo_Curriculum';
+import ClassInfo_Review from '../../../../../components/EveryScreens/ClassInfo_Review';
+import ClassInfo_Consulting from '../../../../../components/EveryScreens/ClassInfo_Consulting';
+import ClassInfo_RefundPolicy from '../../../../../components/EveryScreens/ClassInfo_RefundPolicy';
 //#endregion
 
 const {height, width} = Dimensions.get('window');
 const TEAL = '#63e6be';
 
 const ClassInfoPresenter = ({navigation, classInfo}) => {
-  const [scrollY, setScrollY] = useState(0);
+  // const [scrollY, setScrollY] = useState(0);
+  const scrollY = useRef(0);
   const [componentsHeight, setComponentsHeight] = useState({
     paymentInfo: 0,
     scrollToGroup: 0,
@@ -62,10 +63,9 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
       teacherInfo + curriculum + review + consulting + alpha,
     ];
 
-    scrollY.scrollTo({
-      x: 0,
+    scrollY.current.scrollTo({
       y: scrollPosition[idx],
-      animatied: true,
+      animated: true,
     });
   };
 
@@ -80,7 +80,7 @@ const ClassInfoPresenter = ({navigation, classInfo}) => {
   };
 
   return (
-    <ScrollView style={styles.scrollContainer}>
+    <ScrollView style={styles.scrollContainer} ref={scrollY}>
       <View style={{zIndex: 1}}>
         <Image source={class_Info.class_Image} style={styles.imgProfile} />
       </View>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   srcollToButton: {
-    backgroundColor: '#38d9a9',
+    backgroundColor: TEAL,
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 5,

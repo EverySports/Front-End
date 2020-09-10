@@ -5,11 +5,11 @@ import BottomTabNavigator from './src/screens/Main/BottomTabNavigator';
 
 const AppSwitchNavigator = createSwitchNavigator(
   {
-    login: Login,
+    // login: Login,
     main: BottomTabNavigator,
   },
   {
-    initialRouteName: 'login',
+    initialRouteName: 'main',
   },
 );
 

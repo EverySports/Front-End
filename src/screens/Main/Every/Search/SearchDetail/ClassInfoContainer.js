@@ -3,6 +3,9 @@ import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {getClassInfo} from '../../../../../modules/classInfo';
 import ClassInfoPresenter from './ClassInfoPresenter';
+import Loading from '../../../../../components/Common/Loading';
+import Error from '../../../../../components/Common/Error';
+
 const ClassInfoContainer = ({navigation, route}) => {
   const {loading, data, error} = useSelector(
     (state) => state.classInfo.classInfo,
@@ -16,18 +19,8 @@ const ClassInfoContainer = ({navigation, route}) => {
     dispatch(getClassInfo());
   }, [dispatch]);
 
-  if (loading)
-    return (
-      <View>
-        <Text>로딩중</Text>
-      </View>
-    );
-  if (error)
-    return (
-      <View>
-        <Text>에러</Text>
-      </View>
-    );
+  if (loading) return <Loading />;
+  if (error) return <Error />;
   if (!data) return null;
 
   return <ClassInfoPresenter navigation={navigation} classInfo={data} />;

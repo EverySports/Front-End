@@ -1,8 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, Dimensions} from 'react-native';
-import PtTeacher from '../../../../components/PtTeacher';
-
-const {width, height} = Dimensions.get('window');
+import {StyleSheet, View, ScrollView} from 'react-native';
+import PtTeacher from '../../../../components/EveryScreens/PtTeacher';
 
 const SearchTeacherPresenter = ({navigation, teacherList, currentCategory}) => {
   return (

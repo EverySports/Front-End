@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {View, Text} from 'react-native';
 import {getCategoryClassList} from '../../../../modules/category';
 import SearchClassPresenter from './SearchClassPresenter';
-import Loader from '../../../../components/Loader';
+import Loader from '../../../../components/Common/Loader';
+import Error from '../../../../components/Common/Error';
 const SearchContainer = ({navigation, currentCategory}) => {
   const {data, loading, error} = useSelector(
     (state) => state.category.searchList,
@@ -16,12 +16,7 @@ const SearchContainer = ({navigation, currentCategory}) => {
 
   if (loading) return <Loader />;
 
-  if (error)
-    return (
-      <View>
-        <Text>에러...</Text>
-      </View>
-    );
+  if (error) return <Error />;
 
   if (!data.classList) return null;
 

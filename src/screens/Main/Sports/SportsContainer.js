@@ -8,11 +8,12 @@ const SportsContainer = ({navigation}) => {
   const {loading, data, error} = useSelector(
     (state) => state.sportsSchedule.sportsSchedule,
   );
+  const {userInfo} = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const {user_ID} = UserAPI.getGlobalUserInfo();
-    dispatch(getSportsSchedule(user_ID));
+    // const {user_ID} = UserAPI.getGlobalUserInfo();
+    dispatch(getSportsSchedule(userInfo.user_ID));
   }, [dispatch]);
 
   if (loading)

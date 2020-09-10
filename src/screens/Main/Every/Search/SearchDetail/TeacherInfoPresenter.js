@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
-import TeacherInfo_About from '../../../../../components/TeacherInfo_About';
-import TeacherInfo_ClassList from '../../../../../components/TeacherInfo_ClassList';
-import TeacherInfo_ReviewList from '../../../../../components/TeacherInfo_ReviewList';
+import TeacherInfo_About from '../../../../../components/EveryScreens/TeacherInfo_About';
+import TeacherInfo_ClassList from '../../../../../components/EveryScreens/TeacherInfo_ClassList';
+import TeacherInfo_ReviewList from '../../../../../components/EveryScreens/TeacherInfo_ReviewList';
 
 const {width, height} = Dimensions.get('window');
 

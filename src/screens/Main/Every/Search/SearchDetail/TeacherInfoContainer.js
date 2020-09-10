@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import TeacherInfoPresenter from './TeacherInfoPresenter';
 import {getTeacherInfo} from '../../../../../modules/teacherInfo';
+import Loading from '../../../../../components/Common/Loading';
+import Error from '../../../../../components/Common/Error';
 
 let ID;
 const TeacherInfoContainer = ({navigation, route}) => {
@@ -19,18 +20,8 @@ const TeacherInfoContainer = ({navigation, route}) => {
     dispatch(getTeacherInfo(ID));
   }, [dispatch]);
 
-  if (loading)
-    return (
-      <View>
-        <Text>로딩중...</Text>
-      </View>
-    );
-  if (error)
-    return (
-      <View>
-        <Text>TeacherInfoContainer Page ERROR</Text>
-      </View>
-    );
+  if (loading) return <Loading />;
+  if (error) return <Error />;
   if (!data) return null;
 
   return (

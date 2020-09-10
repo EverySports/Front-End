@@ -8,10 +8,10 @@ import {
   Image,
 } from 'react-native';
 //#region Image import
-import yoga from '../assets/img/yoga.png';
-import pilates from '../assets/img/pilates2.png';
-import health from '../assets/img/health.png';
-import diet from '../assets/img/diet.png';
+import yoga from '../../assets/img/yoga.png';
+import pilates from '../../assets/img/pilates2.png';
+import health from '../../assets/img/health.png';
+import diet from '../../assets/img/diet.png';
 //#endregion
 
 const {width, height} = Dimensions.get('window');

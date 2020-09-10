@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getClasses} from '../../../modules/classes';
 import EveryPresenter from './EveryPresenter';
-import {View, Text} from 'react-native';
+import Loading from '../../../components/Common/Loading';
+import Error from '../../../components/Common/Error';
 
 const EveryContainer = ({navigation}) => {
   const {data, loading, error} = useSelector((state) => state.classes.classes);
@@ -12,18 +13,8 @@ const EveryContainer = ({navigation}) => {
     dispatch(getClasses());
   }, [dispatch]);
 
-  if (loading)
-    return (
-      <View>
-        <Text>로딩중...</Text>
-      </View>
-    );
-  if (error)
-    return (
-      <View>
-        <Text>Every Container Page Error</Text>
-      </View>
-    );
+  if (loading) return <Loading />;
+  if (error) return <Error />;
   if (!data.hotClasses && !data.newClasses) return null;
 
   return <EveryPresenter classes={data} navigation={navigation} />;

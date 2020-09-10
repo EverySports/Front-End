@@ -1,8 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, ScrollView, Dimensions} from 'react-native';
-import PtClassComponent from '../../../../components/PtClassComponent';
-
-const {width, height} = Dimensions.get('window');
+import {StyleSheet, View, ScrollView} from 'react-native';
+import PtClassComponent from '../../../../components/EveryScreens/PtClassComponent';
 
 const SearchClassPresenter = ({navigation, classList}) => {
   return (
