@@ -24,7 +24,7 @@ const EveryPresenter = ({classes, navigation}) => {
         <LinearGradient
           colors={colors}
           start={{x: 0, y: 0}}
-          end={{x: 1, y: 3}}
+          end={{x: 2, y: 3}}
           style={{
             height: HEADER_HEIGHT,
           }}>
@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginLeft: 20,
     fontSize: 24,
-    color: '#495057',
+    // color: '#495057',
+    color: '#fff',
     fontWeight: 'bold',
     opacity: scrollY.interpolate({
       inputRange: [0, HEADER_HEIGHT / 4, HEADER_HEIGHT / 2],

@@ -3,17 +3,19 @@ import {View, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getSportsSchedule} from '../../../modules/sportsSchedule';
 import SportsPresenter from './SportsPresenter';
-import * as UserAPI from '../../../api/user';
+
 const SportsContainer = ({navigation}) => {
   const {loading, data, error} = useSelector(
     (state) => state.sportsSchedule.sportsSchedule,
   );
-  const {userInfo} = useSelector((state) => state.user.userInfo);
+  const {data: userInfo} = useSelector((state) => state.user.userInfo);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // const {user_ID} = UserAPI.getGlobalUserInfo();
-    dispatch(getSportsSchedule(userInfo.user_ID));
+    console.log('\t\tuser_Info : ', userInfo);
+
+    dispatch(getSportsSchedule(1));
   }, [dispatch]);
 
   if (loading)
