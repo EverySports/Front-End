@@ -1,13 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginContainer from './LoginContainer';
 import GoogleLogin from './GoogleLogin/GoogleLogin';
+import GoogleSignUpConfirm from './GoogleLogin/GoogleSignUpConfirm';
+import AfterSignUp from './AfterSignUp/AfterSignUp';
+import GlobalUserInfoSetting from './AfterSignUp/GlobalUserInfoSetting';
 const Stack = createStackNavigator();
-var navi;
-export default function LoginStackNavigator({navigation}) {
-  navi = navigation;
+let _navigation;
 
+export default function LoginStackNavigator({navigation}) {
+  _navigation = navigation;
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -30,11 +33,27 @@ export default function LoginStackNavigator({navigation}) {
             headerTintColor: '#495057',
           }}
         />
+        <Stack.Screen
+          name="confirm"
+          component={GoogleSignUpConfirm}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="after_signup"
+          component={AfterSignUp}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="userSetting"
+          component={GlobalUserInfoSetting}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
 export const goToMain = () => {
-  navi.navigate('main');
+  _navigation.navigate('main');
 };
