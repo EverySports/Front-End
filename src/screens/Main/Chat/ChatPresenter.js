@@ -19,27 +19,26 @@ const ChatPresenter = ({navigation, ...props}) => {
         <Text style={styles.txtHeader}>Every 채팅</Text>
       </View>
       {/* contents */}
-      <View>
-        <View style={styles.contentsTitle}>
-          <Text style={styles.txtMyClassTitle}>담당 PT 트레이너 채팅방</Text>
-          <Text style={styles.txtMatching}>담당 트레이너 : 2명</Text>
-        </View>
-        <ScrollView style={styles.chatList}>
-          <ChatListItem navigation={navigation} />
-          <ChatListItem navigation={navigation} />
-        </ScrollView>
-      </View>
-      <View>
-        <View style={styles.contentsTitle}>
-          <Text style={styles.txtMyClassTitle}>상담/문의 채팅방</Text>
-        </View>
-        <ScrollView style={styles.chatList}>
-          <ChatListItem navigation={navigation} />
-          <ChatListItem navigation={navigation} />
-        </ScrollView>
-      </View>
+      <ScrollView>
+        <View>
+          <View style={styles.contentsTitle}>
+            <Text style={styles.txtMyClassTitle}>담당 PT 트레이너 채팅방</Text>
+            <Text style={styles.txtMatching}>담당 트레이너 : 2명</Text>
+          </View>
 
-      {/* footer */}
+          <ChatListItem navigation={navigation} />
+          <ChatListItem navigation={navigation} />
+        </View>
+        <View>
+          <View style={styles.contentsTitle}>
+            <Text style={styles.txtMyClassTitle}>상담/문의 채팅방</Text>
+          </View>
+
+          <ChatListItem navigation={navigation} />
+        </View>
+
+        {/* footer */}
+      </ScrollView>
       <View style={styles.footer}>
         <Text style={styles.txtFooter}>
           상대방과의 원활한 채팅활동을 위해 EverySports는
@@ -97,8 +96,6 @@ const styles = StyleSheet.create({
   },
   chatList: {
     paddingBottom: 10,
-    borderBottomWidth: 2,
-    borderBottomColor: '#dee2e6',
   },
   footer: {
     width: width,

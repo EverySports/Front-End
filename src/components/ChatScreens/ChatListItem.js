@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 10,
   },
+  iconDelete: {
+    color: '#fff',
+  },
 });
 
 export default ChatListItem;
