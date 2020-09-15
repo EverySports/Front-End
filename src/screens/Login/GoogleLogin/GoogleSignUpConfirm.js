@@ -44,8 +44,8 @@ const GoogleSignUpConfirm = ({route, navigation}) => {
       .post(`http://localhost/eUsers/?id=${postData.user_ID}`, postData)
       .then(
         navigation.navigate('after_signup', {
+          userName: postData.user_Name,
           postData,
-          userName: state.userInfo.user.name,
         }),
       )
       .catch((err) => {
@@ -57,26 +57,32 @@ const GoogleSignUpConfirm = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <Image source={Logo} style={styles.logo} />
+      <Text style={[styles.txtTitle, {color: '#868e96', marginBottom: 30}]}>
+        이제 EverySports를 시작하실 수 있습니다
+      </Text>
       <View style={styles.contentsBox}>
         <Text style={styles.txtTitle}>
-          입력하신 정보가 맞는지 확인해주세요!
+          마지막으로 입력하신 정보가 맞는지 확인해주세요!
         </Text>
         <View style={styles.contents}>
           <View style={styles.userData}>
             {userData.map((item, key) => (
               <View style={styles.item} key={key}>
                 <Text style={styles.txtLabel}>{item.label} : </Text>
-
                 <Text style={styles.txtValue}>{item.value}</Text>
               </View>
             ))}
           </View>
 
           <View style={styles.buttonGroup}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity
+              style={styles.btnNavigate}
+              onPress={() => navigation.goBack()}>
               <AntDesign style={styles.icon} name="arrowleft" />
+              <Text style={styles.txt}>다시 입력</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={onPress}>
+            <TouchableOpacity style={styles.btnNavigate} onPress={onPress}>
+              <Text style={styles.txt}>다음</Text>
               <AntDesign style={styles.icon} name="arrowright" />
             </TouchableOpacity>
           </View>
@@ -96,7 +102,6 @@ const styles = StyleSheet.create({
   logo: {
     width: width * 0.88,
     height: 100,
-    borderWidth: 1,
   },
   contentsBox: {
     paddingVertical: 20,
@@ -114,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   txtTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#495057',
     marginBottom: 10,
@@ -143,26 +148,30 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#495057',
   },
-  /////////
   buttonGroup: {
     alignSelf: 'center',
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    borderWidth: 1,
-    width: width * 0.7,
+    justifyContent: 'space-between',
+    width: width * 0.75,
   },
-  btnNavigate: (type) => ({
+  btnNavigate: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    // width: 10,
-    // height: 10,
-    // color : type ? '#fff' : '#000'
-    // borderRadius:
-  }),
-
+    width: width * 0.35,
+    height: 40,
+    backgroundColor: '#3bc9db',
+    borderRadius: 10,
+  },
   icon: {
-    fontSize: 22,
+    fontSize: 30,
     color: '#fff',
+  },
+  txt: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+    paddingHorizontal: 10,
   },
 });
 

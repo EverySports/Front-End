@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
+//#region import
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,47 +11,32 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-const {width} = Dimensions.get('window');
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Moment from 'moment';
 import axios from 'axios';
-import * as initScreen from '../LoginStackNavigator';
-// 1. 로그인 버튼 클릭
-// 2. 구글아이디 입력
-// 3. 프론트 -> 백  정보 전송 (ex  토큰)
-// 4. 백 -> 프론트 response
-//       만약 비회원이라면 (백 : 토큰을 통해 얻은 값과 비회원임을 알리는 리스폰을 프론트로 전송)
-//       만약 회원이라면 (백 : 로그인 사용자 정보를 프론트로 전송)
-//  4.1 회원가입 진행
-//  4.2 회원가입을 위한 정보 프론트 -> 백 전송
-//  4.3 백에서 유저 정보 저장
-// 5. 백 : 로그인 사용자 정보를 프론트로 전송, 프론트 : global state에 로그인 유저 정보 저장
-// 6. navigate main screens
 
-//additional SignUp Screen
+//#endregion
+const {width} = Dimensions.get('window');
+
 export default function GoogleSignup({navigation, state}) {
   const phone = useRef(null);
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
-  const [gender, setGender] = useState({
-    m: 0,
-    f: 0,
-  });
+  const [gender, setGender] = useState(-1);
   const [input, setInput] = useState({
-    gender: 'non-selected',
+    gender: -1,
     phone: null,
     birthDay: new Date('2020/01/01'),
   });
 
-  const onPress_SetGender = (gender) => (e) => {
-    const [m, f] = gender === 'm' ? [1, 0] : [0, 1];
-    setGender({
-      ...gender,
-      m: m,
-      f: f,
+  const onPress_SetGender = (_gender) => {
+    const userSelectGenderType = _gender === 'm' ? 0 : 1;
+    setGender(userSelectGenderType);
+    setInput({
+      ...input,
+      gender: userSelectGenderType,
     });
   };
 
@@ -63,40 +49,32 @@ export default function GoogleSignup({navigation, state}) {
   };
 
   const onPress_Signup = async () => {
-    setInput({
-      ...input,
-      gender:
-        gender.m && !gender.f
-          ? 'M'
-          : !gender.m && gender.f
-          ? 'F'
-          : 'non-selected',
-    });
+    setError(false);
     if (!input.phone || input.phone.length !== 11) {
       phone.current.focus();
-      setError(!error);
+      setError(true);
+      return;
     }
-    if (input.gender === 'non-selected') {
-      setError(!error);
+    if (input.gender === -1) {
+      setError(true);
+      return;
     }
-    ///
-    await axios
-      .post(`http://localhost/eUsers/?id=${state.userInfo.user.id}`, {
-        id: state.userInfo.user.id,
-        name: state.userInfo.user.name,
-        email: state.userInfo.user.email,
-        gender: input.gender,
-        birthDay: input.birthDay,
-        phone: input.phone,
-        point: 0,
-      })
-      .then(initScreen.goToMain())
-      .catch((err) => {
-        console.log(err);
-        navigation.goBack();
+
+    if (!error) {
+      const postData = {
+        user_ID: state.userInfo.user.id,
+        user_Name: state.userInfo.user.name,
+        user_Email: state.userInfo.user.email,
+        user_Gender: input.gender,
+        user_BirthDay: input.birthDay,
+        user_Phone: input.phone,
+        user_Point: 0,
+      };
+
+      navigation.navigate('confirm', {
+        postData: postData,
       });
-    // navigation.goBack();
-    // initScreen.goToMain();
+    }
   };
 
   return (
@@ -106,7 +84,6 @@ export default function GoogleSignup({navigation, state}) {
           회원가입을 위한 추가 정보를 입력 해주세요
         </Text>
         <View style={styles.contents}>
-          {/* 기존 정보 */}
           <View style={styles.row}>
             <Text style={styles.left}>이름 :</Text>
             <View style={styles.right}>
@@ -119,13 +96,11 @@ export default function GoogleSignup({navigation, state}) {
               <Text style={styles.txtInfo}>{state.userInfo.user.email}</Text>
             </View>
           </View>
-
           {/* 추가 입력 정보 */}
           <Text style={styles.txtSmallTitle}>추가입력 정보</Text>
           <Text style={styles.txtP}>
             트레이너님과 사용자님을 보호하기 위한 용도로 사용됩니다.
           </Text>
-
           <View style={styles.row}>
             <Text style={styles.left}>핸드폰 번호 :</Text>
             <TextInput
@@ -141,7 +116,6 @@ export default function GoogleSignup({navigation, state}) {
               }
             />
           </View>
-
           <View style={[styles.row, {flexDirection: 'column'}]}>
             <View style={{flexDirection: 'row'}}>
               <Text style={styles.left}>생년월일 :</Text>
@@ -185,7 +159,7 @@ export default function GoogleSignup({navigation, state}) {
               ]}>
               <TouchableOpacity
                 style={styles.btnGender}
-                onPress={onPress_SetGender('m')}>
+                onPress={(e) => onPress_SetGender('m')}>
                 <Ionicons
                   style={[styles.txtGender('m', gender), {marginRight: 5}]}
                   name="male"
@@ -194,7 +168,7 @@ export default function GoogleSignup({navigation, state}) {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.btnGender}
-                onPress={onPress_SetGender('f')}>
+                onPress={(e) => onPress_SetGender('f')}>
                 <Ionicons
                   style={[styles.txtGender('f', gender), {marginRight: 5}]}
                   name="female"
@@ -339,9 +313,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     color:
-      key === 'm' && gender.m
+      key === 'm' && gender === 0
         ? '#ffd43b'
-        : key === 'f' && gender.f
+        : key === 'f' && gender === 1
         ? '#ffd43b'
         : '#adb5bd',
   }),

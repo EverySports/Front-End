@@ -36,7 +36,6 @@ export const setUserInfo = (postData) => (dispatch) => {
   dispatch({type: SET_USERINFO});
   try {
     const userInfo = postData;
-    console.log('module, userInfo : ', userInfo);
     dispatch({
       type: SET_USERINFO_SUCCESS,
       userInfo,
