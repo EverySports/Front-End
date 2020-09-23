@@ -11,7 +11,6 @@ import Moment from 'moment';
 import axios from 'axios';
 import Logo from '../../../assets/img/splash.png';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
 const {width} = Dimensions.get('window');
 
 const GoogleSignUpConfirm = ({route, navigation}) => {

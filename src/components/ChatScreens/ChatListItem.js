@@ -12,7 +12,7 @@ import ChatIcon from '../../assets/img/chat.png';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 const {width} = Dimensions.get('window');
 
-const ChatListItem = ({navigation}) => {
+const ChatListItem = ({navigation, name, text}) => {
   return (
     <ScrollView
       horizontal={true}
@@ -22,9 +22,9 @@ const ChatListItem = ({navigation}) => {
         <Image source={ChatIcon} style={styles.imgProfile} />
 
         <View style={styles.chatInfo}>
-          <Text style={styles.txtName}>강슬기 트레이너</Text>
+          <Text style={styles.txtName}>{name} 트레이너</Text>
           <Text style={styles.txtLastChat} numberOfLines={1}>
-            빠빨간맛 두두두두 궁금해 허니 두두두두두
+            {text}
           </Text>
         </View>
       </TouchableOpacity>
@@ -65,6 +65,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 14,
     color: '#868e96',
+
+    width: 300,
   },
   hide: {
     justifyContent: 'center',
