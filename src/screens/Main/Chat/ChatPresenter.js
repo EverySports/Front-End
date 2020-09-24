@@ -26,15 +26,37 @@ const ChatPresenter = ({navigation, ...props}) => {
             <Text style={styles.txtMatching}>담당 트레이너 : 2명</Text>
           </View>
 
-          <ChatListItem navigation={navigation} />
-          <ChatListItem navigation={navigation} />
+          <ChatListItem
+            name={'김OO'}
+            text={'저녁에 단백질 위주의 식단으로 준비하시고'}
+            navigation={navigation}
+          />
+          <ChatListItem
+            name={'임OO'}
+            text={'오늘 화상 PT 있으신거 잊지 않으셨죠?!'}
+            navigation={navigation}
+          />
         </View>
         <View>
           <View style={styles.contentsTitle}>
             <Text style={styles.txtMyClassTitle}>상담/문의 채팅방</Text>
           </View>
 
-          <ChatListItem navigation={navigation} />
+          <ChatListItem
+            name={'강OO'}
+            text={'허리 통증을 완화하는 과정을 추천드립니다!'}
+            navigation={navigation}
+          />
+          <ChatListItem
+            name={'김OO'}
+            text={'먼저 골반 교정 과정을 진행해 보는것이 좋을 것 같아요!'}
+            navigation={navigation}
+          />
+          <ChatListItem
+            name={'이OO'}
+            text={'무엇이든 물어봐 주세요! 성실히 답변해 드리겠습니다!'}
+            navigation={navigation}
+          />
         </View>
 
         {/* footer */}
@@ -77,7 +99,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   contentsTitle: {
-    marginVertical: 10,
+    marginVertical: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
