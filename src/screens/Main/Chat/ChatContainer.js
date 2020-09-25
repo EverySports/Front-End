@@ -5,7 +5,13 @@ import {getUserInfo} from '../../../modules/user';
 
 import ChatPresenter from './ChatPresenter';
 const ChatContainer = ({navigation}) => {
-  const {loading, error, data} = useSelector((state) => state.user.userInfo);
+  const {loading: infoLoading, error: infoError, data: infoData} = useSelector(
+    (state) => state.user.userInfo,
+  );
+  const {loading: chatLoading, error: chatError, data: chatData} = useSelector(
+    (state) => state.user.userInfo,
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserInfo());
@@ -15,19 +21,19 @@ const ChatContainer = ({navigation}) => {
     };
   }, [dispatch]);
 
-  if (!loading)
+  if (!(infoLoading && chatLoading))
     return (
       <View style={styles.container}>
         <Text>Error</Text>
       </View>
     );
-  if (!error)
+  if (!(infoError && chatError))
     return (
       <View style={styles.container}>
         <Text>Error</Text>
       </View>
     );
-  if (!data) return null;
+  if (!(infoData && chatData)) return null;
 
   return <ChatPresenter navigation={navigation} />;
 };

@@ -9,7 +9,7 @@ const HEADER_HEIGHT = 200;
 const EveryPresenter = ({classes, navigation}) => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const {hotClasses, newClasses} = classes;
-  const colors = ['#005AA7', '#FFFDE4', '#fff'];
+  const colors = ['#9796f0', '#fbc7d4', '#fff'];
 
   return (
     <Animated.ScrollView
