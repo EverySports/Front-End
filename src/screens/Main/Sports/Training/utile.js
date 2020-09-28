@@ -1,6 +1,6 @@
 import React from 'react';
 import sportsImg1 from '../../../../assets/img/sports1.png';
-import sportsImg2 from '../../../../assets/img/sports2.png';
+import sportsImg2 from '../../../../assets/img/asdasd.png';
 import sportsImg3 from '../../../../assets/img/sports3.png';
 import sportsImg4 from '../../../../assets/img/sports4.png';
 import sportsImg5 from '../../../../assets/img/sports5.png';
